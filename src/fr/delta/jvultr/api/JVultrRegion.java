@@ -8,12 +8,12 @@ import com.google.gson.JsonObject;
 public class JVultrRegion {
 
     enum Continent{
-        North_America,
-        South_America,
-        Asia,
-        Europe,
-        Australia,
-        Africa;
+        NORTH_AMERICA,
+        SOUTH_AMERICA,
+        ASIA,
+        EUROPE,
+        AUSTRALIA,
+        AFRICA;
     }
     private int id;
     private String name;
@@ -25,7 +25,7 @@ public class JVultrRegion {
         this.id = value.get("DCID").getAsInt();
         this.name = value.get("name").getAsString();
         this.country = value.get("country").getAsString();
-        this.continent = Continent.valueOf(value.get("continent").getAsString().replace(' ' , '_'));
+        this.continent = Continent.valueOf(value.get("continent").getAsString().replace(' ' , '_').toUpperCase());
         this.state = value.get("state").getAsString();
         this.ddosProtection = value.get("ddos_protection").getAsBoolean();
     }
