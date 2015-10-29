@@ -1,0 +1,63 @@
+package fr.delta.jvultr.api;
+
+import com.google.gson.JsonObject;
+
+/**
+ * Created by david on 29/10/15.
+ */
+public class JVultrRegion {
+
+    enum Continent{
+        North_America,
+        South_America,
+        Asia,
+        Europe,
+        Australia,
+        Africa;
+    }
+    private int id;
+    private String name;
+    private String country;
+    private Continent continent;
+    private String state;
+    private boolean ddosProtection;
+    public JVultrRegion(JsonObject value) {
+        this.id = value.get("DCID").getAsInt();
+        this.name = value.get("name").getAsString();
+        this.country = value.get("country").getAsString();
+        this.continent = Continent.valueOf(value.get("continent").getAsString().replace(' ' , '_'));
+        this.state = value.get("state").getAsString();
+        this.ddosProtection = value.get("ddos_protection").getAsBoolean();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public Continent getContinent() {
+        return continent;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public boolean haveDDOSProtection(){
+        return ddosProtection;
+    }
+
+    @Override
+    public String toString() {
+        return "id:"  + id + ",name:" + name + ",country:" + country
+                + ",continent:" + continent + ",state:" +state +
+                ",ddosProtection:" +ddosProtection;
+    }
+}
