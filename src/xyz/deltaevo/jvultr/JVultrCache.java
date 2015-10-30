@@ -1,8 +1,8 @@
-package fr.delta.jvultr;
+package xyz.deltaevo.jvultr;
 
-import fr.delta.jvultr.api.JVultrPlan;
-import fr.delta.jvultr.api.JVultrRegion;
-import fr.delta.jvultr.exception.JVultrException;
+import xyz.deltaevo.jvultr.api.JVultrPlan;
+import xyz.deltaevo.jvultr.api.JVultrRegion;
+import xyz.deltaevo.jvultr.exception.JVultrException;
 
 import java.util.HashMap;
 

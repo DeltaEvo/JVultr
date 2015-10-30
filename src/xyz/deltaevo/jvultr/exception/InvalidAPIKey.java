@@ -1,4 +1,4 @@
-package fr.delta.jvultr.exception;
+package xyz.deltaevo.jvultr.exception;
 
 /**
  * Created by david on 29/10/15.

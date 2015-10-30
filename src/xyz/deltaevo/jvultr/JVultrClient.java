@@ -1,10 +1,10 @@
-package fr.delta.jvultr;
+package xyz.deltaevo.jvultr;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import fr.delta.jvultr.api.JVultrSnapshot;
-import fr.delta.jvultr.exception.*;
+import xyz.deltaevo.jvultr.api.JVultrSnapshot;
+import xyz.deltaevo.jvultr.exception.JVultrException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class JVultrClient {
         this.apiKey = apiKey;
     }
 
-    public HashMap<String , JVultrSnapshot> getSnapshot() throws JVultrException{
+    public HashMap<String , JVultrSnapshot> getSnapshot() throws JVultrException {
         JsonParser parser = new JsonParser();
         JsonElement reponse = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/snapshot/list?api_key=" + apiKey));
         if(reponse.isJsonObject()){

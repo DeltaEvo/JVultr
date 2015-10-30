@@ -1,12 +1,12 @@
-package fr.delta.jvultr;
+package xyz.deltaevo.jvultr;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import fr.delta.jvultr.api.JVultrOS;
-import fr.delta.jvultr.api.JVultrPlan;
-import fr.delta.jvultr.api.JVultrRegion;
-import fr.delta.jvultr.exception.*;
+import xyz.deltaevo.jvultr.api.JVultrOS;
+import xyz.deltaevo.jvultr.api.JVultrPlan;
+import xyz.deltaevo.jvultr.api.JVultrRegion;
+import xyz.deltaevo.jvultr.exception.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

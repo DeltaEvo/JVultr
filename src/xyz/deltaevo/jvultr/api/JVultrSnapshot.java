@@ -1,7 +1,7 @@
-package fr.delta.jvultr.api;
+package xyz.deltaevo.jvultr.api;
 
 import com.google.gson.JsonObject;
-import fr.delta.jvultr.JVultrAPI;
+import xyz.deltaevo.jvultr.JVultrAPI;
 
 import java.text.ParseException;
 import java.util.Date;

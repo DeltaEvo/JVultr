@@ -1,4 +1,4 @@
-package fr.delta.jvultr.api;
+package xyz.deltaevo.jvultr.api;
 
 import com.google.gson.JsonObject;
 

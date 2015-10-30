@@ -1,9 +1,9 @@
-package fr.delta.jvultr.api;
+package xyz.deltaevo.jvultr.api;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import fr.delta.jvultr.JVultrCache;
+import xyz.deltaevo.jvultr.JVultrCache;
 
 import java.util.Arrays;
 
