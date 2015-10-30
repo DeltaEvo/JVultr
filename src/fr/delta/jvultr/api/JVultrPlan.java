@@ -3,6 +3,7 @@ package fr.delta.jvultr.api;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import fr.delta.jvultr.JVultrCache;
 
 import java.util.Arrays;
 
@@ -24,7 +25,7 @@ public class JVultrPlan {
     private float pricePerMonth;
     private boolean windows;
     private PlanType type;
-    private int[] availableLocations;
+    private JVultrRegion[] availableRegions;
 
     public JVultrPlan(JsonObject value) {
         this.id = value.get("VPSPLANID").getAsInt();
@@ -36,16 +37,18 @@ public class JVultrPlan {
         this.pricePerMonth = value.get("price_per_month").getAsFloat();
         this.windows = value.get("windows").getAsBoolean();
         this.type = PlanType.valueOf(value.get("plan_type").getAsString());
-        if(value.has("available_location")){
-            JsonArray array = value.get("available_location").getAsJsonArray();
-            availableLocations = new int[array.size()];
+        if(value.has("available_locations")){
+            JsonArray array = value.get("available_locations").getAsJsonArray();
+            availableRegions = new JVultrRegion[array.size()];
             int i = 0;
             for(JsonElement element : array){
-                availableLocations[i] = element.getAsInt();
+                int regionId = element.getAsInt();
+                if(!JVultrCache.getCachedRegions().containsKey(regionId)) JVultrCache.reloadCachedRegions();
+                availableRegions[i] = JVultrCache.getCachedRegions().get(regionId);
                 i++;
             }
         }else{
-             availableLocations = new int[0];
+             availableRegions = new JVultrRegion[0];
         }
     }
 
@@ -85,8 +88,8 @@ public class JVultrPlan {
         return type;
     }
 
-    public int[] getAvailableLocations() {
-        return availableLocations;
+    public JVultrRegion[] getAvailableRegions() {
+        return availableRegions;
     }
 
     @Override
@@ -94,6 +97,6 @@ public class JVultrPlan {
         return "id:" + id + ",name:" + name + ",cpus:"
                 + cpus + ",ram:" + ram + ",disk:" + disk + ",bandwidth:"
                 + bandwidth + ",pricePerMonth:" + pricePerMonth + ",windows:" + windows
-                + ",type:" + type + ",availableLocations:" + Arrays.toString(availableLocations) + "\n";
+                + ",type:" + type + ",availableLocations:" + Arrays.toString(availableRegions);
     }
 }
