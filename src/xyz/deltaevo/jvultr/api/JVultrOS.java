@@ -1,6 +1,7 @@
 package xyz.deltaevo.jvultr.api;
 
 import com.google.gson.JsonObject;
+import xyz.deltaevo.jvultr.utils.Reflection;
 
 /**
  * Created by david on 29/10/15.
@@ -47,6 +48,6 @@ public class JVultrOS {
 
     @Override
     public String toString() {
-        return "id:" + id + ",name:" + name + ",arch:" + arch + ",family:" + family + ",windows:" + windows + "\n";
+        return Reflection.toString(this);
     }
 }

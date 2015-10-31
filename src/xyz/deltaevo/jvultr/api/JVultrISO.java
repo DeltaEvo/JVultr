@@ -8,32 +8,29 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * Created by david on 29/10/15.
+ * Created by david on 31/10/15.
  */
-public class JVultrSnapshot {
-    public enum Status{
-        PENDING,
-        COMPLETE;
-    }
-    private String id;
-    private Date created;
-    private String description;
-    private long size;
-    private Status status;
+public class JVultrISO {
 
-    public JVultrSnapshot(JsonObject value) {
-        this.id = value.get("SNAPSHOTID").getAsString();
+    private int id;
+    private Date created;
+    private String filename;
+    private long size;
+    private String md5;
+
+    public JVultrISO(JsonObject value){
+        this.id = value.get("ISOID").getAsInt();
         try {
             this.created = JVultrAPI.dateFormat.parse(value.get("date_created").getAsString());
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        this.description = value.get("description").getAsString();
+        this.filename = value.get("filename").getAsString();
         this.size = value.get("size").getAsLong();
-        this.status = Status.valueOf(value.get("status").getAsString().toUpperCase());
+        this.md5 = value.get("md5sum").getAsString();
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -41,16 +38,16 @@ public class JVultrSnapshot {
         return created;
     }
 
-    public String getDescription() {
-        return description;
+    public String getFilename() {
+        return filename;
     }
 
     public long getSize() {
         return size;
     }
 
-    public Status getStatus() {
-        return status;
+    public String getMd5() {
+        return md5;
     }
 
     @Override

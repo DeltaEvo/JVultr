@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import xyz.deltaevo.jvultr.JVultrCache;
+import xyz.deltaevo.jvultr.utils.Reflection;
 
 import java.util.Arrays;
 
@@ -11,6 +12,7 @@ import java.util.Arrays;
  * Created by david on 29/10/15.
  */
 public class JVultrPlan {
+
     public enum PlanType{
         SSD,
         DEDICATED,
@@ -42,9 +44,7 @@ public class JVultrPlan {
             availableRegions = new JVultrRegion[array.size()];
             int i = 0;
             for(JsonElement element : array){
-                int regionId = element.getAsInt();
-                if(!JVultrCache.getCachedRegions().containsKey(regionId)) JVultrCache.reloadCachedRegions();
-                availableRegions[i] = JVultrCache.getCachedRegions().get(regionId);
+                availableRegions[i] = JVultrCache.getCachedRegion(element.getAsInt());
                 i++;
             }
         }else{
@@ -94,9 +94,6 @@ public class JVultrPlan {
 
     @Override
     public String toString() {
-        return "id:" + id + ",name:" + name + ",cpus:"
-                + cpus + ",ram:" + ram + ",disk:" + disk + ",bandwidth:"
-                + bandwidth + ",pricePerMonth:" + pricePerMonth + ",windows:" + windows
-                + ",type:" + type + ",availableLocations:" + Arrays.toString(availableRegions);
+        return Reflection.toString(this);
     }
 }

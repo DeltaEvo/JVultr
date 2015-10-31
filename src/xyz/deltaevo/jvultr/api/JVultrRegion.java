@@ -1,6 +1,7 @@
 package xyz.deltaevo.jvultr.api;
 
 import com.google.gson.JsonObject;
+import xyz.deltaevo.jvultr.utils.Reflection;
 
 /**
  * Created by david on 29/10/15.
@@ -56,8 +57,6 @@ public class JVultrRegion {
 
     @Override
     public String toString() {
-        return "id:"  + id + ",name:" + name + ",country:" + country
-                + ",continent:" + continent + ",state:" +state +
-                ",ddosProtection:" +ddosProtection;
+        return Reflection.toString(this);
     }
 }

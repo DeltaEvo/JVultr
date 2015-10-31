@@ -10,6 +10,9 @@ import java.util.HashMap;
  * Created by david on 30/10/15.
  */
 public class JVultrCache {
+    //////////////////////////////////////////////////////////
+    //                       Static Cache                  //
+    ////////////////////////////////////////////////////////
     private static HashMap<Integer,JVultrRegion> cachedRegions;
     private static HashMap<Integer , JVultrPlan> cachedPlans;
     static {
@@ -41,6 +44,11 @@ public class JVultrCache {
         }
     }
 
+    public static JVultrRegion getCachedRegion(int id){
+        if(!getCachedRegions().containsKey(id))reloadCachedRegions();
+        return getCachedRegions().get(id);
+    }
+
     public static HashMap<Integer,JVultrPlan> getCachedPlans(){
         return cachedPlans;
     }
@@ -55,5 +63,10 @@ public class JVultrCache {
         } catch (JVultrException e) {
             e.printStackTrace();
         }
+    }
+
+    public static JVultrPlan getCachedPlan(int id){
+        if(!getCachedPlans().containsKey(id))reloadCachedPlans();
+        return getCachedPlans().get(id);
     }
 }
