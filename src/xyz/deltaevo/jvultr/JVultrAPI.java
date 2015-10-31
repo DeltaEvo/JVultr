@@ -169,19 +169,4 @@ public class JVultrAPI {
     public static JVultrClient newClient(String apiKey){
         return new JVultrClient(apiKey);
     }
-
-    public static void main(String[] args) {
-        try {
-            JVultrClient client = newClient("qzJM.8z8si4GLRq8XDLfFO");
-            /*for(JVultrServer s:client.getSevers().values()){
-                client.createSnapshot(s);
-            }*/
-           for(JVultrServer plan : client.getSevers().values())
-               System.out.println(plan);
-            //System.out.println(client.createServer(24, 94, 193, null, null, null, null, null, null, "Sceatjtebaiz", null, false, null, null, true, false));
-            client.destroyServer(2821509);
-        } catch (JVultrException e) {
-            e.printStackTrace();
-        }
-    }
 }
