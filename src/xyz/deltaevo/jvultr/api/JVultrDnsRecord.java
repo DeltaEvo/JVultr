@@ -9,6 +9,9 @@ import xyz.deltaevo.jvultr.utils.Reflection;
 public class JVultrDnsRecord {
     public enum Type{
         A,
+        MX,
+        SRV,
+        AAAA,
         CNAME;
     }
 
@@ -25,7 +28,6 @@ public class JVultrDnsRecord {
         this.data = value.get("data").getAsString();
         this.priority = value.get("priority").getAsInt();
     }
-
     public int getId() {
         return id;
     }

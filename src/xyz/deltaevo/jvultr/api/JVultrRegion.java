@@ -8,7 +8,7 @@ import xyz.deltaevo.jvultr.utils.Reflection;
  */
 public class JVultrRegion {
 
-    enum Continent{
+    public enum Continent{
         NORTH_AMERICA,
         SOUTH_AMERICA,
         ASIA,

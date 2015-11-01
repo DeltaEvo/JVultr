@@ -24,6 +24,10 @@ public class JVultrDns {
         }
     }
 
+    public JVultrDns(String domain , Date created){
+
+    }
+
     public String getDomain() {
         return domain;
     }
