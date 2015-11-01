@@ -1,5 +1,7 @@
 package xyz.deltaevo.jvultr;
 
+import xyz.deltaevo.jvultr.api.JVultrISO;
+import xyz.deltaevo.jvultr.api.JVultrOS;
 import xyz.deltaevo.jvultr.api.JVultrPlan;
 import xyz.deltaevo.jvultr.api.JVultrRegion;
 import xyz.deltaevo.jvultr.exception.JVultrException;
@@ -15,6 +17,7 @@ public class JVultrCache {
     ////////////////////////////////////////////////////////
     private static HashMap<Integer,JVultrRegion> cachedRegions;
     private static HashMap<Integer , JVultrPlan> cachedPlans;
+    private static JVultrOS custom;
     static {
         try {
             cachedRegions = JVultrAPI.getRegions();
@@ -23,6 +26,15 @@ public class JVultrCache {
         }
         try {
             cachedPlans = JVultrAPI.getPlans();
+        } catch (JVultrException e) {
+            e.printStackTrace();
+        }
+        try {
+            for(JVultrOS os : JVultrAPI.getOSs().values()){
+                if(os.getName().equals("Custom")){
+                    custom = os;break;
+                }
+            }
         } catch (JVultrException e) {
             e.printStackTrace();
         }
@@ -68,5 +80,9 @@ public class JVultrCache {
     public static JVultrPlan getCachedPlan(int id){
         if(!getCachedPlans().containsKey(id))reloadCachedPlans();
         return getCachedPlans().get(id);
+    }
+
+    public static JVultrOS getCustom() {
+        return custom;
     }
 }
