@@ -26,7 +26,7 @@ import java.util.Date;
 
 /**
  *  Represent Vultr AccountInfo
- * <p>https://www.vultr.com/api/#account_info</p>
+ * @link https://www.vultr.com/api/#account_info
  * @author DeltaEvolution
  */
 public class JVultrAccountInfo {

@@ -17,11 +17,12 @@
  */
 package xyz.deltaevo.jvultr.annotation;
 
-import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 
 /**
- * @author DeltaEvo
  * Used to specify optional args
+ * @author DeltaEvo
  */
-@Documented
+@Target(ElementType.PARAMETER)
 public @interface Optional {}

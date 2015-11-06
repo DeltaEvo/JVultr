@@ -39,7 +39,8 @@ public class JVultrClient {
 
     /**
      * Create a new JVultrClient Instance to communicate with Vultr API
-     * @param apiKey the JVultr apiKey available in vultr Members Area(https://my.vultr.com/settings/#API)
+     * @param apiKey the JVultr apiKey available in vultr Members Area
+     * @link https://my.vultr.com/settings/#API
      */
     public JVultrClient(String apiKey){
         this.apiKey = apiKey;
@@ -47,9 +48,10 @@ public class JVultrClient {
 
     /**
      * Retrieve information about the current account
-     * Read more at: https://www.vultr.com/api/#account_info
+     * @link https://www.vultr.com/api/#account_info
      * @return the account info
-     * @throws JVultrException if an Exception Occurred
+     * @throws JVultrException if an Error Occurred
+     * @see JVultrAccountInfo
      */
     public JVultrAccountInfo getAccountInfo() throws JVultrException{
         JsonParser parser = new JsonParser();
@@ -60,9 +62,10 @@ public class JVultrClient {
 
     /**
      * List all snapshots on the current account
-     * <p>Read more at: https://www.vultr.com/api/#snapshot_snapshot_list</p>
+     * @link https://www.vultr.com/api/#snapshot_snapshot_list
      * @return an HashMap with the Vultr Snapshot key and the JVultrSnaphost
-     * @throws JVultrException if an Exception Occurred
+     * @throws JVultrException if an Error Occurred
+     * @see JVultrSnapshot
      */
     public HashMap<String , JVultrSnapshot> getSnapshots() throws JVultrException {
         JsonParser parser = new JsonParser();
@@ -80,9 +83,10 @@ public class JVultrClient {
 
     /**
      * List all ISOs currently available on this account
-     * <p>Read more at: https://www.vultr.com/api/#iso_iso_list</p>
+     * @link https://www.vultr.com/api/#iso_iso_list
      * @return an HashMap with the Vultr ISO key and the JVultrISO
-     * @throws JVultrException if an Exception Occurred
+     * @throws JVultrException if an Error Occurred
+     * @see JVultrISO
      */
     public HashMap<Integer , JVultrISO> getISOs() throws JVultrException {
         JsonParser parser = new JsonParser();
@@ -100,9 +104,10 @@ public class JVultrClient {
 
     /**
      * List all ISOs currently available on this account
-     * <p>Read more at: https://www.vultr.com/api/#iso_iso_list</p>
+     * @link https://www.vultr.com/api/#iso_iso_list
      * @return an HashMap with the Vultr Script key and the JVultrScript
-     * @throws JVultrException if an Exception Occurred
+     * @throws JVultrException if an Error Occurred
+     * @see JVultrScript
      */
     public HashMap<Integer , JVultrScript> getScripts() throws JVultrException {
         JsonParser parser = new JsonParser();
@@ -297,7 +302,7 @@ public class JVultrClient {
 
     /**
      * Create a new Vultr Server
-     * <p>Read more at: https://www.vultr.com/api/#server_create</p>
+     * @link https://www.vultr.com/api/#server_create
      * @param regionId Region id to create this virtual machine in.
      * @param planId Plan id to use when creating this virtual machine.
      * @param osId Operating systems'id to use.
@@ -316,6 +321,7 @@ public class JVultrClient {
      * @param ddosProtection If true, DDOS protection will be enabled on the subscription (there is an additional charge for this).
      * @return An instance of the JVultrServer created
      * @throws JVultrException if an Error occured
+     * @see JVultrServer
      */
     public JVultrServer createServer(int regionId , int planId , int osId ,
                              @Optional String ipxeChainUrl , @Optional Integer isoId ,
