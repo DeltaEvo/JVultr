@@ -18,8 +18,8 @@
 package xyz.deltaevo.jvultr.exception;
 
 /**
- * @author DeltaEvolution
  * A JVultr Exception
+ * @author DeltaEvolution
  */
 public class JVultrException extends Exception{
     private final int responceCode;

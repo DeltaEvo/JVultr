@@ -21,14 +21,14 @@ import com.google.gson.JsonObject;
 import xyz.deltaevo.jvultr.utils.Reflection;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr Dns Record
+ * @author DeltaEvolution
  */
 public class JVultrDnsRecord {
 
     /**
-     * @author DeltaEvolution
      * Represent a Vultr Dns Record Type
+     * @author DeltaEvolution
      */
     public enum Type{
         A,

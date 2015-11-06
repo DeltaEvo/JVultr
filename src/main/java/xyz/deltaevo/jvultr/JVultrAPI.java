@@ -36,10 +36,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author DeltaEvolution
  * Represent the Vultr API
+ * @author DeltaEvolution
  */
 public class JVultrAPI {
+    /**
+     * Vultr api EndPoint
+     */
     public static final String endpoint = "https://api.vultr.com/";
     public static final SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 

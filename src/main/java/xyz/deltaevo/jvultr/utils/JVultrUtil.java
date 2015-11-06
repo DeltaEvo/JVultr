@@ -24,8 +24,8 @@ import xyz.deltaevo.jvultr.api.JVultrRegion;
 import xyz.deltaevo.jvultr.exception.JVultrException;
 
 /**
- * @author DeltaEvolution
  * Utils for JVultr
+ * @author DeltaEvolution
  */
 public class JVultrUtil {
 

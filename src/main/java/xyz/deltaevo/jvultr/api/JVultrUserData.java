@@ -24,8 +24,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr UserData in Base64
+ * @author DeltaEvolution
  */
 public class JVultrUserData {
 

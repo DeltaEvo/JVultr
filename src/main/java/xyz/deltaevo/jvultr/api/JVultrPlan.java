@@ -26,14 +26,14 @@ import xyz.deltaevo.jvultr.utils.Reflection;
 import java.util.Arrays;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr Plan
+ * @author DeltaEvolution
  */
 public class JVultrPlan {
 
     /**
-     * @author DeltaEvolution
      * Represent a Vultr Plan Type
+     * @author DeltaEvolution
      */
     public enum Type{
         /**

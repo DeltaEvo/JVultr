@@ -18,8 +18,8 @@
 package xyz.deltaevo.jvultr.exception;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr 500 Error
+ * @author DeltaEvolution
  */
 public class InternalServerError extends JVultrException {
     public InternalServerError() {

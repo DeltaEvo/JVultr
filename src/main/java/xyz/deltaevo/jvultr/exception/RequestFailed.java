@@ -18,8 +18,8 @@
 package xyz.deltaevo.jvultr.exception;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr 412 Error or a JVultr Error
+ * @author DeltaEvolution
  */
 public class RequestFailed extends JVultrException {
     public RequestFailed() {

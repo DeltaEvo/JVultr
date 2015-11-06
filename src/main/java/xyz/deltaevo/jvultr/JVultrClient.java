@@ -27,8 +27,8 @@ import xyz.deltaevo.jvultr.exception.JVultrException;
 import java.util.*;
 
 /**
- * @author DeltaEvultion
  * A class to communicate with Vultr API
+ * @author DeltaEvultion
  */
 public class JVultrClient {
 

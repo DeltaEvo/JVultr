@@ -18,8 +18,8 @@
 package xyz.deltaevo.jvultr.exception;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr 503 Error
+ * @author DeltaEvolution
  */
 public class RateLimitExceeded extends JVultrException {
 

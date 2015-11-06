@@ -18,8 +18,8 @@
 package xyz.deltaevo.jvultr.exception;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr 400 Error
+ * @author DeltaEvolution
  */
 public class InvalidAPILocation extends JVultrException {
     public InvalidAPILocation(String apiLocation) {

@@ -18,8 +18,8 @@
 package xyz.deltaevo.jvultr.exception;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr 405 Error
+ * @author DeltaEvolution
  */
 public class InvalidHTTPMethod extends JVultrException {
     public InvalidHTTPMethod(String method , String url) {

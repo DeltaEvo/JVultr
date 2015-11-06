@@ -18,8 +18,8 @@
 package xyz.deltaevo.jvultr.exception;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr 403 Error
+ * @author DeltaEvolution
  */
 public class InvalidAPIKey extends JVultrException {
     public InvalidAPIKey() {

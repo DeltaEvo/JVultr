@@ -28,14 +28,14 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr Server
+ * @author DeltaEvolution
  */
 public class JVultrServer {
 
     /**
-     * @author DeltaEvolution
      * Represent a Vultr Server Status
+     * @author DeltaEvolution
      */
     public enum Status{
         PENDING,
@@ -43,8 +43,8 @@ public class JVultrServer {
     }
 
     /**
-     * @author DeltaEvolution
      * Represent a Vultr Server Power Status
+     * @author DeltaEvolution
      */
     public enum PowerStatus{
         STOPPED,
@@ -52,8 +52,8 @@ public class JVultrServer {
     }
 
     /**
-     * @author DeltaEvolution
      * Represent a Vultr Server State
+     * @author DeltaEvolution
      */
     public enum ServerState{
         LOCKED,

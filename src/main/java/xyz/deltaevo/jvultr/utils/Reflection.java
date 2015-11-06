@@ -21,8 +21,8 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 
 /**
- * @author DeltaEvolution
  * Utils for Reflection
+ * @author DeltaEvolution
  */
 public class Reflection {
 

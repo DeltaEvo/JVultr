@@ -25,14 +25,14 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr Snapshot
+ * @author DeltaEvolution
  */
 public class JVultrSnapshot {
 
     /**
-     * @author DeltaEvolution
      * Represent a Vultr Snapshot Status
+     * @author DeltaEvolution
      */
     public enum Status{
         PENDING,

@@ -21,8 +21,8 @@ import com.google.gson.JsonObject;
 import xyz.deltaevo.jvultr.utils.Reflection;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr Application
+ * @author DeltaEvolution
  */
 public class JVultrApplication {
 

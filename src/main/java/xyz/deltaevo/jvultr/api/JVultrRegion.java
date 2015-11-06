@@ -21,14 +21,14 @@ import com.google.gson.JsonObject;
 import xyz.deltaevo.jvultr.utils.Reflection;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr Region
+ * @author DeltaEvolution
  */
 public class JVultrRegion {
 
     /**
-     * @author DeltaEvolution
      * Represent Earth Continents
+     * @author DeltaEvolution
      */
     public enum Continent{
         NORTH_AMERICA,

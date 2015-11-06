@@ -25,8 +25,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr Dns
+ * @author DeltaEvolution
  */
 public class JVultrDns {
 

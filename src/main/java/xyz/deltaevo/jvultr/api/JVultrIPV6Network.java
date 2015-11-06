@@ -21,8 +21,8 @@ import com.google.gson.JsonObject;
 import xyz.deltaevo.jvultr.utils.Reflection;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr IPV6 Network
+ * @author DeltaEvolution
  */
 public class JVultrIPV6Network {
 

@@ -25,14 +25,14 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr Script
+ * @author DeltaEvolution
  */
 public class JVultrScript {
 
     /**
-     * @author DeltaEvolution
      * Represent a Script Type
+     * @author DeltaEvolution
      */
     public enum Type{
         BOOT,

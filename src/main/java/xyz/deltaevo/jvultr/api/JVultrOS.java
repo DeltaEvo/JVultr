@@ -21,10 +21,15 @@ import com.google.gson.JsonObject;
 import xyz.deltaevo.jvultr.utils.Reflection;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr OS
+ * @author DeltaEvolution
  */
 public class JVultrOS {
+
+    /**
+     * Represent a Vultr OS Arch
+     * @author DeltaEvolution
+     */
     public enum Arch{
         x64,
         i386;

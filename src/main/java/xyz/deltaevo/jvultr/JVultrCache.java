@@ -25,8 +25,8 @@ import xyz.deltaevo.jvultr.exception.JVultrException;
 import java.util.HashMap;
 
 /**
- * @author DeltaEvolution
  * A JVultr Cache to limit requests
+ * @author DeltaEvolution
  */
 public class JVultrCache {
     //////////////////////////////////////////////////////////

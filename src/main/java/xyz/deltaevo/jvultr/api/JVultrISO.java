@@ -25,8 +25,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * @author DeltaEvolution
  * Represent a Vultr ISO
+ * @author DeltaEvolution
  */
 public class JVultrISO {
 
