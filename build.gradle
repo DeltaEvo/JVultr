@@ -7,12 +7,5 @@ archivesBaseName = 'JVultr'
 
 compileJava.options.encoding = 'UTF-8'
 
-repositories {
-    mavenCentral()
-    maven {
-        url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
-    }
-}
-dependencies {
-    compile 'com.google.code.gson:gson:2.3.1'
-}
+repositories { mavenCentral()}
+dependencies { compile 'com.google.code.gson:gson:2.3.1' }
