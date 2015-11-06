@@ -40,7 +40,7 @@ public class JVultrClient {
     /**
      * Create a new JVultrClient Instance to communicate with Vultr API
      * @param apiKey the JVultr apiKey available in vultr Members Area
-     * @link https://my.vultr.com/settings/#API
+     * <a href="https://my.vultr.com/settings/#API">API Doc</a>
      */
     public JVultrClient(String apiKey){
         this.apiKey = apiKey;
@@ -48,7 +48,7 @@ public class JVultrClient {
 
     /**
      * Retrieve information about the current account
-     * @link https://www.vultr.com/api/#account_info
+     * <a href="https://www.vultr.com/api/#account_info">API Doc</a>
      * @return the account info
      * @throws JVultrException if an Error Occurred
      * @see JVultrAccountInfo
@@ -62,7 +62,7 @@ public class JVultrClient {
 
     /**
      * List all snapshots on the current account
-     * @link https://www.vultr.com/api/#snapshot_snapshot_list
+     * <a href="https://www.vultr.com/api/#snapshot_snapshot_list">API Doc</a>
      * @return an HashMap with the Vultr Snapshot key and the JVultrSnaphost
      * @throws JVultrException if an Error Occurred
      * @see JVultrSnapshot
@@ -83,7 +83,7 @@ public class JVultrClient {
 
     /**
      * List all ISOs currently available on this account
-     * @link https://www.vultr.com/api/#iso_iso_list
+     * <a href="https://www.vultr.com/api/#iso_iso_list">API Doc</a>
      * @return an HashMap with the Vultr ISO key and the JVultrISO
      * @throws JVultrException if an Error Occurred
      * @see JVultrISO
@@ -104,7 +104,7 @@ public class JVultrClient {
 
     /**
      * List all ISOs currently available on this account
-     * @link https://www.vultr.com/api/#iso_iso_list
+     * <a href="https://www.vultr.com/api/#iso_iso_list">API Doc</a>
      * @return an HashMap with the Vultr Script key and the JVultrScript
      * @throws JVultrException if an Error Occurred
      * @see JVultrScript
@@ -302,7 +302,7 @@ public class JVultrClient {
 
     /**
      * Create a new Vultr Server
-     * @link https://www.vultr.com/api/#server_create
+     * <a href="https://www.vultr.com/api/#server_create">API Doc</a>
      * @param regionId Region id to create this virtual machine in.
      * @param planId Plan id to use when creating this virtual machine.
      * @param osId Operating systems'id to use.

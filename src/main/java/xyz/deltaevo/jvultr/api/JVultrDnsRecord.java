@@ -101,7 +101,7 @@ public class JVultrDnsRecord {
 
     /**
      * Get dns record data
-     * @return
+     * @return record data
      */
     public String getData() {
         return data;

@@ -25,8 +25,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- *  Represent Vultr AccountInfo
- * @link https://www.vultr.com/api/#account_info
+ * Represent Vultr AccountInfo
+ * <a href="https://www.vultr.com/api/#account_info">API Doc</a>
  * @author DeltaEvolution
  */
 public class JVultrAccountInfo {
