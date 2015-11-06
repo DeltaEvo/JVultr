@@ -40,7 +40,7 @@ public class JVultrClient {
     /**
      * Create a new JVultrClient Instance to communicate with Vultr API
      * @param apiKey the JVultr apiKey available in vultr Members Area
-     * <a href="https://my.vultr.com/settings/#API">API Doc</a>
+     * <p><a href="https://my.vultr.com/settings/#API">Vultr API Doc</a></p>
      */
     public JVultrClient(String apiKey){
         this.apiKey = apiKey;
@@ -48,7 +48,7 @@ public class JVultrClient {
 
     /**
      * Retrieve information about the current account
-     * <a href="https://www.vultr.com/api/#account_info">API Doc</a>
+     * <p><a href="https://www.vultr.com/api/#account_info">Vultr API Doc</a></p>
      * @return the account info
      * @throws JVultrException if an Error Occurred
      * @see JVultrAccountInfo
@@ -62,7 +62,7 @@ public class JVultrClient {
 
     /**
      * List all snapshots on the current account
-     * <a href="https://www.vultr.com/api/#snapshot_snapshot_list">API Doc</a>
+     * <p><a href="https://www.vultr.com/api/#snapshot_snapshot_list">Vultr API Doc</a></p>
      * @return an HashMap with the Vultr Snapshot key and the JVultrSnaphost
      * @throws JVultrException if an Error Occurred
      * @see JVultrSnapshot
@@ -83,7 +83,7 @@ public class JVultrClient {
 
     /**
      * List all ISOs currently available on this account
-     * <a href="https://www.vultr.com/api/#iso_iso_list">API Doc</a>
+     * <p><a href="https://www.vultr.com/api/#iso_iso_list">Vultr API Doc</a></p>
      * @return an HashMap with the Vultr ISO key and the JVultrISO
      * @throws JVultrException if an Error Occurred
      * @see JVultrISO
@@ -104,7 +104,7 @@ public class JVultrClient {
 
     /**
      * List all ISOs currently available on this account
-     * <a href="https://www.vultr.com/api/#iso_iso_list">API Doc</a>
+     * <p><a href="https://www.vultr.com/api/#iso_iso_list">Vultr API Doc</a></p>
      * @return an HashMap with the Vultr Script key and the JVultrScript
      * @throws JVultrException if an Error Occurred
      * @see JVultrScript
@@ -302,7 +302,7 @@ public class JVultrClient {
 
     /**
      * Create a new Vultr Server
-     * <a href="https://www.vultr.com/api/#server_create">API Doc</a>
+     * <p><a href="https://www.vultr.com/api/#server_create">Vultr API Doc</a></p>
      * @param regionId Region id to create this virtual machine in.
      * @param planId Plan id to use when creating this virtual machine.
      * @param osId Operating systems'id to use.
