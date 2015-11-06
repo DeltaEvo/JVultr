@@ -25,6 +25,11 @@ import xyz.deltaevo.jvultr.utils.Reflection;
  * Represent a Vultr Dns Record
  */
 public class JVultrDnsRecord {
+
+    /**
+     * @author DeltaEvolution
+     * Represent a Vultr Dns Record Type
+     */
     public enum Type{
         A,
         MX,
@@ -33,12 +38,35 @@ public class JVultrDnsRecord {
         CNAME;
     }
 
+    /**
+     * Dns Record id
+     */
     private int id;
+
+    /**
+     * Dns Record type
+     */
     private Type type;
+
+    /**
+     * Dns Record name
+     */
     private String name;
+
+    /**
+     * Dns Record data
+     */
     private String data;
+
+    /**
+     * Dns Record priority
+     */
     private int priority;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrDnsRecord(JsonObject value){
         this.id = value.get("RECORDID").getAsInt();
         this.type = Type.valueOf(value.get("type").getAsString());
@@ -46,22 +74,43 @@ public class JVultrDnsRecord {
         this.data = value.get("data").getAsString();
         this.priority = value.get("priority").getAsInt();
     }
+
+    /**
+     * Get dns record id
+     * @return dns record id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Get dns record type
+     * @return dns record type
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     * Get dns name
+     * @return dns name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Get dns record data
+     * @return
+     */
     public String getData() {
         return data;
     }
 
+    /**
+     * Get dns priority
+     * @return dns priority
+     */
     public int getPriority() {
         return priority;
     }

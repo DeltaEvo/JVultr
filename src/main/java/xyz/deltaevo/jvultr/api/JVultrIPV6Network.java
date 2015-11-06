@@ -25,9 +25,26 @@ import xyz.deltaevo.jvultr.utils.Reflection;
  * Represent a Vultr IPV6 Network
  */
 public class JVultrIPV6Network {
+
+    /**
+     *IPv6 network
+     */
     private String network;
+
+    /**
+     *IPv6 ip
+     */
     private String ip;
+
+    /**
+     *Ipv6 size
+     */
     private int size;
+
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrIPV6Network(JsonObject value){
         if(value.has("v6_network") &&!value.get("v6_network").getAsString().isEmpty())
             this.network = value.get("v6_network").getAsString();
@@ -37,9 +54,14 @@ public class JVultrIPV6Network {
             this.size = value.get("v6_network_size").getAsInt();
     }
 
+    /**
+     * Get IPv6 Network
+     * @return IPv6 Network
+     */
     public String getNetwork() {
         return network;
     }
+
 
     public String getIp() {
         return ip;

@@ -45,6 +45,10 @@ public class JVultrScript {
     private Type type;
     private String script;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrScript(JsonObject value){
         this.id = value.get("SCRIPTID").getAsInt();
         try {

@@ -60,6 +60,10 @@ public class JVultrPlan {
     private Type type;
     private JVultrRegion[] availableRegions;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrPlan(JsonObject value) {
         this.id = value.get("VPSPLANID").getAsInt();
         this.name = value.get("name").getAsString();

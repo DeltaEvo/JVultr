@@ -46,6 +46,10 @@ public class JVultrApplication {
      */
     private String deployName;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrApplication(JsonObject value){
         this.id = value.get("APPID").getAsInt();
         this.name = value.get("name").getAsString();

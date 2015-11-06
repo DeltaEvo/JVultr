@@ -36,6 +36,10 @@ public class JVultrOS {
     private String family;
     private boolean windows;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrOS(JsonObject value) {
         this.id = value.get("OSID").getAsInt();
         this.name = value.get("name").getAsString();

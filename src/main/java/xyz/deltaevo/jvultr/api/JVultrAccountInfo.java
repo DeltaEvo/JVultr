@@ -53,7 +53,7 @@ public class JVultrAccountInfo {
 
     /**
      * DON'T USE THIS CONSTRUCTOR !
-     * @param value the JsonObject representing an account
+     * @param value the JsonObject representing this object
      */
     public JVultrAccountInfo(JsonObject value){
         this.balance = value.get("balance").getAsFloat();

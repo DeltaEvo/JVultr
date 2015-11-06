@@ -87,6 +87,10 @@ public class JVultrServer {
     private boolean autoBackups;
     private String tag;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrServer(JsonObject value) {
         this.id = value.get("SUBID").getAsInt();
         this.os = value.get("os").getAsString();

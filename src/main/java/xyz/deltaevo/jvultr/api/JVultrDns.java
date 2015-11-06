@@ -30,9 +30,20 @@ import java.util.Date;
  */
 public class JVultrDns {
 
+    /**
+     * Dns domain
+     */
     private String domain;
+
+    /**
+     * Dns name
+     */
     private Date created;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrDns(JsonObject value){
         this.domain = value.get("domain").getAsString();
         try {
@@ -42,14 +53,28 @@ public class JVultrDns {
         }
     }
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param domain dns domain
+     * @param created dns date creation
+     */
     public JVultrDns(String domain , Date created){
-
+        this.domain = domain;
+        this.created = created;
     }
 
+    /**
+     * Get the dns Domain
+     * @return dns domain
+     */
     public String getDomain() {
         return domain;
     }
 
+    /**
+     * Get dns creation date
+     * @return date when dns was created
+     */
     public Date getCreated() {
         return created;
     }

@@ -28,7 +28,13 @@ import java.util.Base64;
  * Represent a Vultr UserData in Base64
  */
 public class JVultrUserData {
-    String userData;
+
+    private String userData;
+
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrUserData(JsonObject value){
         userData = value.get("userdata").getAsString();
     }

@@ -44,6 +44,11 @@ public class JVultrRegion {
     private Continent continent;
     private String state;
     private boolean ddosProtection;
+
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrRegion(JsonObject value) {
         this.id = value.get("DCID").getAsInt();
         this.name = value.get("name").getAsString();

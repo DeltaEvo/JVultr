@@ -44,6 +44,10 @@ public class JVultrSnapshot {
     private long size;
     private Status status;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrSnapshot(JsonObject value) {
         this.id = value.get("SNAPSHOTID").getAsString();
         try {

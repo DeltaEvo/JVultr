@@ -36,6 +36,10 @@ public class JVultrISO {
     private long size;
     private String md5;
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param value the JsonObject representing this object
+     */
     public JVultrISO(JsonObject value){
         this.id = value.get("ISOID").getAsInt();
         try {
