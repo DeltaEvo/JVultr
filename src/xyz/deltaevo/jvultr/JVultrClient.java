@@ -1,3 +1,20 @@
+/*
+ * Copyright 2015 DeltaEvolution
+ *
+ * This file is part of JVultr.
+ * JVultr is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * JVultr is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with JVultr. If not, see <http://www.gnu.org/licenses/>.
+ */
 package xyz.deltaevo.jvultr;
 
 import com.google.gson.JsonElement;
@@ -10,23 +27,43 @@ import xyz.deltaevo.jvultr.exception.JVultrException;
 import java.util.*;
 
 /**
- * Created by david on 29/10/15.
+ * @author DeltaEvultion
+ * A class to communicate with Vultr API
  */
 public class JVultrClient {
 
+    /**
+     * The Vultr API Key
+     */
     private String apiKey;
 
-    JVultrClient(String apiKey){
+    /**
+     * Create a new JVultrClient Instance to communicate with Vultr API
+     * @param apiKey the JVultr apiKey available in vultr Members Area(https://my.vultr.com/settings/#API)
+     */
+    public JVultrClient(String apiKey){
         this.apiKey = apiKey;
     }
 
-
+    /**
+     * Retrieve information about the current account
+     * Read more at: https://www.vultr.com/api/#account_info
+     * @return the account info
+     * @throws JVultrException if an Exception Occurred
+     */
     public JVultrAccountInfo getAccountInfo() throws JVultrException{
         JsonParser parser = new JsonParser();
         JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/account/info?api_key=" + apiKey));
         if(response.isJsonObject())return new JVultrAccountInfo((JsonObject) response);
         else return null;
     }
+
+    /**
+     * List all snapshots on the current account
+     * <p>Read more at: https://www.vultr.com/api/#snapshot_snapshot_list</p>
+     * @return an HashMap with the Vultr Snapshot key and the JVultrSnaphost
+     * @throws JVultrException if an Exception Occurred
+     */
     public HashMap<String , JVultrSnapshot> getSnapshots() throws JVultrException {
         JsonParser parser = new JsonParser();
         JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/snapshot/list?api_key=" + apiKey));
@@ -41,6 +78,12 @@ public class JVultrClient {
         return new HashMap<>();
     }
 
+    /**
+     * List all ISOs currently available on this account
+     * <p>Read more at: https://www.vultr.com/api/#iso_iso_list</p>
+     * @return an HashMap with the Vultr ISO key and the JVultrISO
+     * @throws JVultrException if an Exception Occurred
+     */
     public HashMap<Integer , JVultrISO> getISOs() throws JVultrException {
         JsonParser parser = new JsonParser();
         JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/iso/list?api_key=" + apiKey));
@@ -55,6 +98,12 @@ public class JVultrClient {
         return new HashMap<>();
     }
 
+    /**
+     * List all ISOs currently available on this account
+     * <p>Read more at: https://www.vultr.com/api/#iso_iso_list</p>
+     * @return an HashMap with the Vultr Script key and the JVultrScript
+     * @throws JVultrException if an Exception Occurred
+     */
     public HashMap<Integer , JVultrScript> getScripts() throws JVultrException {
         JsonParser parser = new JsonParser();
         JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/startupscript/list?api_key=" + apiKey));
@@ -248,7 +297,7 @@ public class JVultrClient {
 
     /**
      * Create a new Vultr Server
-     * Read more at: https://www.vultr.com/api/#server_create.
+     * <p>Read more at: https://www.vultr.com/api/#server_create</p>
      * @param regionId Region id to create this virtual machine in.
      * @param planId Plan id to use when creating this virtual machine.
      * @param osId Operating systems'id to use.

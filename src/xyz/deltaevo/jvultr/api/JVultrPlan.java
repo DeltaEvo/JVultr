@@ -1,3 +1,20 @@
+/*
+ * Copyright 2015 DeltaEvolution
+ *
+ * This file is part of JVultr.
+ * JVultr is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * JVultr is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with JVultr. If not, see <http://www.gnu.org/licenses/>.
+ */
 package xyz.deltaevo.jvultr.api;
 
 import com.google.gson.JsonArray;
@@ -9,13 +26,27 @@ import xyz.deltaevo.jvultr.utils.Reflection;
 import java.util.Arrays;
 
 /**
- * Created by david on 29/10/15.
+ * @author DeltaEvolution
+ * Represent a Vultr Plan
  */
 public class JVultrPlan {
 
-    public enum PlanType{
+    /**
+     * @author DeltaEvolution
+     * Represent a Vultr Plan Type
+     */
+    public enum Type{
+        /**
+         * SSD Plan Type
+         */
         SSD,
+        /**
+         * Dedicated Plan Type
+         */
         DEDICATED,
+        /**
+         * Sata Plan Type
+         */
         SATA;
     }
     private int id;
@@ -26,7 +57,7 @@ public class JVultrPlan {
     private float bandwidth;
     private float pricePerMonth;
     private boolean windows;
-    private PlanType type;
+    private Type type;
     private JVultrRegion[] availableRegions;
 
     public JVultrPlan(JsonObject value) {
@@ -38,7 +69,7 @@ public class JVultrPlan {
         this.bandwidth = value.get("bandwidth").getAsFloat();
         this.pricePerMonth = value.get("price_per_month").getAsFloat();
         this.windows = value.get("windows").getAsBoolean();
-        this.type = PlanType.valueOf(value.get("plan_type").getAsString());
+        this.type = Type.valueOf(value.get("plan_type").getAsString());
         if(value.has("available_locations")){
             JsonArray array = value.get("available_locations").getAsJsonArray();
             availableRegions = new JVultrRegion[array.size()];
@@ -84,7 +115,7 @@ public class JVultrPlan {
         return windows;
     }
 
-    public PlanType getType() {
+    public Type getType() {
         return type;
     }
 

@@ -1,3 +1,20 @@
+/*
+ * Copyright 2015 DeltaEvolution
+ *
+ * This file is part of JVultr.
+ * JVultr is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * JVultr is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with JVultr
+ */
 package xyz.deltaevo.jvultr;
 
 import com.google.gson.JsonElement;
@@ -19,7 +36,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by david on 29/10/15.
+ * @author DeltaEvolution
+ * Represent the Vultr API
  */
 public class JVultrAPI {
     public static final String endpoint = "https://api.vultr.com/";
@@ -89,11 +107,17 @@ public class JVultrAPI {
         return new ArrayList<>();
     }
 
+
     public static List<JVultrPlan> getPlansFor(JVultrRegion region) throws JVultrException{
         return getPlansFor(region.getId());
     }
 
-
+    /**
+     * Send a http(or https) get request
+     * @param url Url to send the request
+     * @return the response
+     * @throws JVultrException if an Exception Occurred
+     */
     static String get(String url) throws JVultrException{
         try{
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -120,6 +144,13 @@ public class JVultrAPI {
         }
     }
 
+    /**
+     * Send a http(or https) post request
+     * @param url Url to send the request
+     * @param parameters parameters for this request
+     * @return the response
+     * @throws JVultrException if an Exception Occurred
+     */
     static String post(String url , String parameters) throws JVultrException{
         try{
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -150,7 +181,13 @@ public class JVultrAPI {
             throw new RequestFailed(ex);
         }
     }
-
+    /**
+     * Send a http(or https) post request
+     * @param url Url to send the request
+     * @param parameters parameters for this request
+     * @return the response
+     * @throws JVultrException if an Exception Occurred
+     */
     static String post(String url , Map<String , Object> parameters) throws JVultrException{
         try{
             StringBuilder sb = new StringBuilder();
@@ -166,6 +203,11 @@ public class JVultrAPI {
         }
     }
 
+    /**
+     * Create a new JVultrClient
+     * @param apiKey the JVultr apiKey available in vultr Members Area(https://my.vultr.com/settings/#API)
+     * @return the new JVultrClient
+     */
     public static JVultrClient newClient(String apiKey){
         return new JVultrClient(apiKey);
     }
