@@ -107,7 +107,7 @@ public class JVultrScript {
     /**
      * THIS METHOD DO NOT MODIFY ON VULTR WEBSITE
      * <p>Set script name</p>
-     * @param script name
+     * @param name script name
      */
     public void setName(String name) {
         this.name = name;
@@ -116,7 +116,7 @@ public class JVultrScript {
     /**
      * THIS METHOD DO NOT MODIFY ON VULTR WEBSITE
      * <p>Set script content</p>
-     * @param script content
+     * @param script script content
      */
     public void setScript(String script) {
         this.script = script;
@@ -125,7 +125,7 @@ public class JVultrScript {
     /**
      * THIS METHOD DO NOT MODIFY ON VULTR WEBSITE
      * <p>Set script last modification date</p>
-     * @param last modification date
+     * @param modified last modification date
      * @see Date
      */
     public void setModified(Date modified) {
