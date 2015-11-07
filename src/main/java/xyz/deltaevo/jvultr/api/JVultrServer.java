@@ -60,31 +60,135 @@ public class JVultrServer {
         NONE,
         OK;
     }
+
+    /**
+     * Vultr Server id
+     */
     private int id;
+
+    /**
+     * Server os
+     */
     private String os;
+
+    /**
+     * Server ram amount
+     */
     private String ram;
+
+    /**
+     * Server disk space
+     */
     private String disk;
+
+    /**
+     * Server main ip
+     */
     private String mainIp;
+
+    /**
+     * Server vcpu amount
+     */
     private int vcpus;
+
+    /**
+     * Server region
+     */
     private JVultrRegion region;
+
+    /**
+     * Server default password
+     */
     private String defaultPassword;
+
+    /**
+     * Server creation date
+     */
     private Date created;
+
+    /**
+     * Server pending charges
+     */
     private float pendingCharges;
+
+    /**
+     * Server status
+     */
     private Status status;
+
+    /**
+     * Server cost per month
+     */
     private float costPerMonth;
+
+    /**
+     * Server current bandwidth
+     */
     private float currentBandwidth;
+
+    /**
+     * Server allowed bandwidth
+     */
     private float allowedBandwidth;
+
+    /**
+     * Server netmask
+     */
     private String netmask;
+
+    /**
+     * Server gateway
+     */
     private String gateway;
+
+    /**
+     * Server power status
+     */
     private PowerStatus powerStatus;
+
+    /**
+     * Server state
+     */
     private ServerState serverState;
+
+    /**
+     * Server plan
+     */
     private JVultrPlan plan;
+
+    /**
+     * Server IPv6 network
+     */
     private JVultrIPV6Network v6Network;
+
+    /**
+     * Server IPv6 networks
+     */
     private JVultrIPV6Network[] v6Networks;
+
+    /**
+     * Server label
+     */
     private String label;
+
+    /**
+     * Server internal network ip
+     */
     private String internalIp;
+
+    /**
+     * Server kvm url
+     */
     private String kvmUrl;
+
+    /**
+     * Server have auto backups
+     */
     private boolean autoBackups;
+
+    /**
+     * Server tag
+     */
     private String tag;
 
     /**
@@ -132,106 +236,210 @@ public class JVultrServer {
         this.tag = value.get("tag").getAsString();
     }
 
+    /**
+     * Get Vultr Server id
+     * @return server id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Get server os
+     * @return server os
+     */
     public String getOs() {
         return os;
     }
 
+    /**
+     * Get server ram amount
+     * @return server ram amount
+     */
     public String getRam() {
         return ram;
     }
 
+    /**
+     * Get server disk space
+     * @return disk space
+     */
     public String getDisk() {
         return disk;
     }
 
+    /**
+     * Get server main ip
+     * @return server main ip
+     */
     public String getMainIp() {
         return mainIp;
     }
 
+    /**
+     * Get vcpu count
+     * @return vcpu count
+     */
     public int getVcpusCount() {
         return vcpus;
     }
 
+    /**
+     * Get server region
+     * @return server region
+     */
     public JVultrRegion getRegion() {
         return region;
     }
 
+    /**
+     * Get server default password
+     * @return default password
+     */
     public String getDefaultPassword() {
         return defaultPassword;
     }
 
+    /**
+     * Get server creation date
+     * @return server creation date
+     */
     public Date getCreated() {
         return created;
     }
 
+    /**
+     * Get server pending charges
+     * @return server pending charges
+     */
     public float getPendingCharges() {
         return pendingCharges;
     }
 
+    /**
+     * Get server status
+     * @return server status
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     * Get server cost per month
+     * @return server cost per month
+     */
     public float getCostPerMonth() {
         return costPerMonth;
     }
 
+    /**
+     * Get current server bandwidth
+     * @return current server bandwidth
+     */
     public float getCurrentBandwidth() {
         return currentBandwidth;
     }
 
+    /**
+     * Get server allowed bandwidth
+     * @return server allowed bandwidth
+     */
     public float getAllowedBandwidth() {
         return allowedBandwidth;
     }
 
+    /**
+     * Get server netmask
+     * @return server netmask
+     */
     public String getNetmask() {
         return netmask;
     }
 
+    /**
+     * Get server gateway
+     * @return server gateway
+     */
     public String getGateway() {
         return gateway;
     }
 
+    /**
+     * Get server power status
+     * @return server power status
+     */
     public PowerStatus getPowerStatus() {
         return powerStatus;
     }
 
+    /**
+     * Get server state
+     * @return server state
+     */
     public ServerState getServerState() {
         return serverState;
     }
 
+    /**
+     * Get server plan
+     * @return server plan
+     */
     public JVultrPlan getPlan() {
         return plan;
     }
 
+    /**
+     * Get server main v6 network
+     * @return server main v6 network
+     */
     public JVultrIPV6Network getV6Network() {
         return v6Network;
     }
 
+    /**
+     * Get server v6 networks
+     * @return server v6 networks
+     */
     public JVultrIPV6Network[] getV6Networks() {
         return v6Networks;
     }
 
+    /**
+     * Get server label
+     * @return server label
+     */
     public String getLabel() {
         return label;
     }
 
+    /**
+     * Get server internal network ip
+     * @return server internal network ip
+     */
     public String getInternalIp() {
         return internalIp;
     }
 
+    /**
+     * Get server kvm url
+     * @return server kvm url
+     */
     public String getKvmUrl() {
         return kvmUrl;
     }
 
-    public boolean isAutoBackups() {
+    /**
+     * Get server has auto backup
+     * @return server has auto backup
+     */
+    public boolean hasAutoBackups() {
         return autoBackups;
     }
 
+    /**
+     * Get server tag
+     * @return server tag
+     */
     public String getTag() {
         return tag;
     }

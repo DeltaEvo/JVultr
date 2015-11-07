@@ -61,8 +61,8 @@ public class JVultrCache {
         return cachedRegions;
     }
 
-    public static void setCachedRegions(HashMap<Integer, JVultrRegion> cachedRegions) {
-        cachedRegions = cachedRegions;
+    public static void setCachedRegions(HashMap<Integer, JVultrRegion> regions) {
+        cachedRegions = regions;
     }
 
     public static void reloadCachedRegions(){
@@ -82,8 +82,8 @@ public class JVultrCache {
         return cachedPlans;
     }
 
-    public static void setCachedPlans(HashMap<Integer, JVultrPlan> cachedPlans) {
-        cachedPlans = cachedPlans;
+    public static void setCachedPlans(HashMap<Integer, JVultrPlan> plans) {
+        cachedPlans = plans;
     }
 
     public static void reloadCachedPlans(){

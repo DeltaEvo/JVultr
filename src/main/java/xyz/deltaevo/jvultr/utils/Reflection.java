@@ -26,6 +26,11 @@ import java.util.Arrays;
  */
 public class Reflection {
 
+    /**
+     * Print all field of an object
+     * @param o the object
+     * @return string with all field
+     */
     public static String toString(Object o){
         StringBuilder sb = new StringBuilder();
         Class<?> clazz = o.getClass();

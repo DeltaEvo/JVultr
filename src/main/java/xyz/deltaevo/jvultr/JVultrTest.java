@@ -26,9 +26,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * Created by david on 31/10/15.
- */
 public class JVultrTest {
     public static void main(String[] args) throws IOException {
         try {
