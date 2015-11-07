@@ -50,7 +50,7 @@ public class JVultrClient {
      * Retrieve information about the current account
      * <p><a href="https://www.vultr.com/api/#account_info" target="_blank">Vultr API Doc</a></p>
      * @return the account info
-     * @throws JVultrException if an Error Occurred
+     * @throws JVultrException if an error Occurred
      * @see JVultrAccountInfo
      */
     public JVultrAccountInfo getAccountInfo() throws JVultrException{
@@ -63,8 +63,8 @@ public class JVultrClient {
     /**
      * List all snapshots on the current account
      * <p><a href="https://www.vultr.com/api/#snapshot_snapshot_list" target="_blank">Vultr API Doc</a></p>
-     * @return an HashMap with the Vultr Snapshot key and the JVultrSnaphost
-     * @throws JVultrException if an Error Occurred
+     * @return an HashMap with the Vultr Snapshot key and the JVultrSnapshot
+     * @throws JVultrException if an error Occurred
      * @see JVultrSnapshot
      */
     public HashMap<String , JVultrSnapshot> getSnapshots() throws JVultrException {
@@ -84,8 +84,8 @@ public class JVultrClient {
     /**
      * List all ISOs currently available on this account
      * <p><a href="https://www.vultr.com/api/#iso_iso_list" target="_blank">Vultr API Doc</a></p>
-     * @return an HashMap with the Vultr ISO key and the JVultrISO
-     * @throws JVultrException if an Error Occurred
+     * @return HashMap with the Vultr ISO key and the JVultrISO
+     * @throws JVultrException if an error Occurred
      * @see JVultrISO
      */
     public HashMap<Integer , JVultrISO> getISOs() throws JVultrException {
@@ -105,8 +105,8 @@ public class JVultrClient {
     /**
      * List all ISOs currently available on this account
      * <p><a href="https://www.vultr.com/api/#iso_iso_list" target="_blank">Vultr API Doc</a></p>
-     * @return an HashMap with the Vultr Script key and the JVultrScript
-     * @throws JVultrException if an Error Occurred
+     * @return HashMap with the Vultr Script key and the JVultrScript
+     * @throws JVultrException if an error Occurred
      * @see JVultrScript
      */
     public HashMap<Integer , JVultrScript> getScripts() throws JVultrException {
@@ -123,12 +123,27 @@ public class JVultrClient {
         return new HashMap<>();
     }
 
+    /**
+     * Delete script represented by this id
+     * <p><a href="https://www.vultr.com/api/#startupscript_destroy" target="_blank">Vultr API Doc</a></p>
+     * @param id Vultr script id
+     * @throws JVultrException if an error Occurred
+     */
     public void destroyScript(int id) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("SCRIPTID" , id);
         JVultrAPI.post(JVultrAPI.endpoint + "v1/startupscript/destroy?api_key=" + apiKey , params);
     }
 
+    /**
+     * Create new startup script
+     * <p><a href="https://www.vultr.com/api/#startupscript_create" target="_blank">Vultr API Doc</a></p>
+     * @param name Script name
+     * @param script Script content
+     * @param type Script type
+     * @return JVultrScript representing this new Script
+     * @throws JVultrException if an error Occurred
+     */
     public JVultrScript createScript(String name ,String script , JVultrScript.Type type) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("name" , name);
@@ -140,6 +155,14 @@ public class JVultrClient {
         }else return null;
     }
 
+    /**
+     * Update existing startup script
+     * <p><a href="https://www.vultr.com/api/#startupscript_update" target="_blank">Vultr API Doc</a></p>
+     * @param id id of the Vultr startup script
+     * @param name if not null new name for the script
+     * @param script if not null new content of the script
+     * @throws JVultrException if an error Occurred
+     */
     public void updateScript(int id , @Optional String name , @Optional String script) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("SCRIPTID" , id);
@@ -148,11 +171,25 @@ public class JVultrClient {
         JVultrAPI.post(JVultrAPI.endpoint + "v1/startupscript/destroy?api_key=" + apiKey , params);
     }
 
+    /**
+     * Update an existing startup script
+     * <p><a href="https://www.vultr.com/api/#startupscript_update" target="_blank">Vultr API Doc</a></p>
+     * @param script script to be updated
+     * @throws JVultrException if an error Occurred
+     * @see JVultrScript
+     */
     public void updateScript(JVultrScript script) throws JVultrException{
         updateScript(script.getId() , script.getName() , script.getScript());
         script.setModified(new Date());
     }
 
+    /**
+     * Retrieves a list of operating systems to which this server can be changed.
+     * <p><a href="https://www.vultr.com/api/#server_os_change_list" target="_blank">Vultr API Doc</a></p>
+     * @return HashMap with the Vultr OS id and the JVultrOS
+     * @throws JVultrException if an error Occurred
+     * @see JVultrScript
+     */
     public HashMap<String , JVultrOS> getOsChangeListFor(JVultrServer server) throws JVultrException {
         JsonParser parser = new JsonParser();
         JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/server/os_change_list?api_key=" + apiKey + "&SUBID=" + server.getId()));
@@ -167,6 +204,15 @@ public class JVultrClient {
         return new HashMap<>();
     }
 
+    /**
+     * Retrieve a list of all active plan
+     * <p>Use this method only if you have special plans available</p>
+     * <p><a href="https://www.vultr.com/api/#plans_plan_list" target="_blank">Vultr API Doc</a></p>
+     * @return HashMap with the Vultr Plan id and the JVultrPlan
+     * @throws JVultrException if an error Occurred
+     * @see JVultrPlan
+     * @see JVultrAPI#getPlans()
+     */
     public HashMap<Integer , JVultrPlan> getPlans() throws JVultrException{
         JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/plans/list?api_key=" + apiKey));
         if(response.isJsonObject()){
@@ -180,6 +226,13 @@ public class JVultrClient {
         return new HashMap<>();
     }
 
+    /**
+     * List all active or pending virtual machines on the current account.
+     * <p><a href="https://www.vultr.com/api/#server_server_list" target="_blank">Vultr API Doc</a></p>
+     * @return HashMap with the Vultr Server id and the JVultrServer
+     * @throws JVultrException if an error Occurred
+     * @see JVultrServer
+     */
     public HashMap<Integer , JVultrServer> getSevers() throws JVultrException {
         JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/server/list?api_key=" + apiKey));
         if(response.isJsonObject()){
@@ -193,12 +246,26 @@ public class JVultrClient {
         return new HashMap<>();
     }
 
+    /**
+     * Retrieves the user data for this server.
+     * <p><a href="https://www.vultr.com/api/#server_get_user_data" target="_blank">Vultr API Doc</a></p>
+     * @return JVultrUserData user data of this server
+     * @throws JVultrException if an error Occurred
+     * @see JVultrUserData
+     */
     public JVultrUserData getUserData(int server) throws JVultrException{
         JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/server/get_user_data?api_key=" + apiKey + "&SUBID="+server));
         if(response.isJsonObject())return new JVultrUserData((JsonObject) response);
         return null;
     }
 
+    /**
+     * List all domains associated with the current account
+     * <p><a href="https://www.vultr.com/api/#dns_dns_list" target="_blank">Vultr API Doc</a></p>
+     * @return List with all account JVultrDns
+     * @throws JVultrException if an error Occurred
+     * @see JVultrDns
+     */
     public List<JVultrDns> getDNSs() throws JVultrException{
         JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/dns/list?api_key=" + apiKey));
         if(response.isJsonArray()){

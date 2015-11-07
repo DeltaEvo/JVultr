@@ -44,7 +44,12 @@ public class JVultrAPI {
      * Vultr api EndPoint
      */
     public static final String endpoint = "https://api.vultr.com/";
+
+    /**
+     * Vultr api date format
+     */
     public static final SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+
 
     public static HashMap<Integer,JVultrRegion> getRegions() throws JVultrException {
         JsonElement response = new JsonParser().parse(get(JVultrAPI.endpoint + "v1/regions/list"));
@@ -85,6 +90,13 @@ public class JVultrAPI {
         return new HashMap<>();
     }
 
+    /**
+     * Retrieve a list of all active plan
+     * <p><a href="https://www.vultr.com/api/#plans_plan_list" target="_blank">Vultr API Doc</a></p>
+     * @return HashMap with the Vultr Plan id and the JVultrPlan
+     * @throws JVultrException if an error Occurred
+     * @see JVultrPlan
+     */
     public static HashMap<Integer , JVultrPlan> getPlans() throws JVultrException{
         JsonElement response = new JsonParser().parse(get(JVultrAPI.endpoint + "v1/plans/list"));
         if(response.isJsonObject()){
