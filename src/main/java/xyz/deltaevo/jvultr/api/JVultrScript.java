@@ -38,11 +38,35 @@ public class JVultrScript {
         BOOT,
         PXE;
     }
+
+    /**
+     * Vultr Script id
+     */
     private int id;
+
+    /**
+     * Script creation date
+     */
     private Date created;
+
+    /**
+     * Script lastModification date
+     */
     private Date modified;
+
+    /**
+     * Script name
+     */
     private String name;
+
+    /**
+     * Script type
+     */
     private Type type;
+
+    /**
+     * Script content
+     */
     private String script;
 
     /**
@@ -62,6 +86,15 @@ public class JVultrScript {
         this.script = value.get("script").getAsString();
     }
 
+    /**
+     * DON'T USE THIS CONSTRUCTOR !
+     * @param id Vultr script id
+     * @param created Script created date
+     * @param modified Script last modification date
+     * @param name Script name
+     * @param type Script type
+     * @param script Script content
+     */
     public JVultrScript(int id , Date created ,  Date modified , String name , Type type , String script){
         this.id = id;
         this.created = created;
@@ -71,38 +104,81 @@ public class JVultrScript {
         this.script = script;
     }
 
+    /**
+     * THIS METHOD DO NOT MODIFY ON VULTR WEBSITE
+     * <p>Set script name</p>
+     * @param script name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * THIS METHOD DO NOT MODIFY ON VULTR WEBSITE
+     * <p>Set script content</p>
+     * @param script content
+     */
     public void setScript(String script) {
         this.script = script;
     }
 
+    /**
+     * THIS METHOD DO NOT MODIFY ON VULTR WEBSITE
+     * <p>Set script last modification date</p>
+     * @param last modification date
+     * @see Date
+     */
     public void setModified(Date modified) {
         this.modified = modified;
     }
 
+    /**
+     * Get Vultr script id
+     * @return script id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Get script creation date
+     * @return creation date
+     * @see Date
+     */
     public Date getCreated() {
         return created;
     }
 
+    /**
+     * Get last modified date
+     * @return last modified date
+     * @see Date
+     */
     public Date getModified() {
         return modified;
     }
 
+    /**
+     * Get script name
+     * @return script name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Get script type
+     * @return script type
+     * @see JVultrScript.Type
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     * Get script content
+     * @return script content
+     */
     public String getScript() {
         return script;
     }

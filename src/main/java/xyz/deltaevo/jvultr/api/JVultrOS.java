@@ -35,10 +35,29 @@ public class JVultrOS {
         i386;
     }
 
+    /**
+     * Vultr OS id
+     */
     private int id;
+
+    /**
+     * OS name
+     */
     private String name;
+
+    /**
+     * OS arch
+     */
     private Arch arch;
+
+    /**
+     * OS family
+     */
     private String family;
+
+    /**
+     * OS is windows ?
+     */
     private boolean windows;
 
     /**
@@ -53,22 +72,42 @@ public class JVultrOS {
         this.windows = value.get("windows").getAsBoolean();
     }
 
+    /**
+     * Get OS id
+     * @return os id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Get OS name
+     * @return os name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Get OS arch
+     * @return os arch
+     */
     public Arch getArch() {
         return arch;
     }
 
+    /**
+     * Get OS family
+     * @return os family
+     */
     public String getFamily() {
         return family;
     }
 
+    /**
+     * OS is windows ?
+     * @return is windows ?
+     */
     public boolean isWindows() {
         return windows;
     }

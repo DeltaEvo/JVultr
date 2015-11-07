@@ -38,11 +38,35 @@ public class JVultrRegion {
         AUSTRALIA,
         AFRICA;
     }
+
+    /**
+     * Vultr Region id
+     */
     private int id;
+
+    /**
+     * Region name
+     */
     private String name;
+
+    /**
+     * Region country
+     */
     private String country;
+
+    /**
+     * Region continent
+     */
     private Continent continent;
+
+    /**
+     * Region state
+     */
     private String state;
+
+    /**
+     * Region have ddos protection ?
+     */
     private boolean ddosProtection;
 
     /**
@@ -58,26 +82,50 @@ public class JVultrRegion {
         this.ddosProtection = value.get("ddos_protection").getAsBoolean();
     }
 
+    /**
+     * Get Vultr Region id
+     * @return region id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Get Plan name
+     * @return plan name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Get Plan country
+     * @return plan country
+     */
     public String getCountry() {
         return country;
     }
 
+    /**
+     * Get Plan continent
+     * @return plan continent
+     */
     public Continent getContinent() {
         return continent;
     }
 
+    /**
+     * Get Plan state
+     * @return plan state
+     */
     public String getState() {
         return state;
     }
 
+    /**
+     * Plan have ddos protection ?
+     * @return if plan have ddos protection
+     */
     public boolean haveDDOSProtection(){
         return ddosProtection;
     }

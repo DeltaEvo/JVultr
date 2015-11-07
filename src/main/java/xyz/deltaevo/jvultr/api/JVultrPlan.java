@@ -49,15 +49,55 @@ public class JVultrPlan {
          */
         SATA;
     }
+
+    /**
+     * Vultr plan id
+     */
     private int id;
+
+    /**
+     * Plan name
+     */
     private String name;
+
+    /**
+     * Plan cpu amount
+     */
     private int cpus;
+
+    /**
+     * Plan ram amount
+     */
     private int ram;
+
+    /**
+     * Plan disk space
+     */
     private int disk;
+
+    /**
+     * Plan bandwidth
+     */
     private float bandwidth;
+
+    /**
+     * Plan price/month
+     */
     private float pricePerMonth;
+
+    /**
+     * Plan is windows ?
+     */
     private boolean windows;
+
+    /**
+     * Plan type
+     */
     private Type type;
+
+    /**
+     * Plan available regions
+     */
     private JVultrRegion[] availableRegions;
 
     /**
@@ -87,42 +127,82 @@ public class JVultrPlan {
         }
     }
 
+    /**
+     * Get Vultr Plan id
+     * @return plan id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Get plan name
+     * @return plan name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Get plan cpu amount
+     * @return cpu amount
+     */
     public int getCpus() {
         return cpus;
     }
 
+    /**
+     * Get plan ram amount
+     * @return ram amount
+     */
     public int getRam() {
         return ram;
     }
 
+    /**
+     * Get plan disk space
+     * @return disk space
+     */
     public int getDisk() {
         return disk;
     }
 
+    /**
+     * Get plan bandwidth
+     * @return plan bandwidth
+     */
     public float getBandwidth() {
         return bandwidth;
     }
 
+    /**
+     * Get plan price per month
+     * @return plan price per month
+     */
     public float getPricePerMonth() {
         return pricePerMonth;
     }
 
+    /**
+     * Get if plan is windows ?
+     * @return is windows ?
+     */
     public boolean isWindows() {
         return windows;
     }
 
+    /**
+     * Get plan type
+     * @return plan type
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     * Get plan available regions
+     * @return plan available regions
+     */
     public JVultrRegion[] getAvailableRegions() {
         return availableRegions;
     }

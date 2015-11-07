@@ -38,10 +38,31 @@ public class JVultrSnapshot {
         PENDING,
         COMPLETE;
     }
+
+    /**
+     * Vultr snapshot id
+     */
     private String id;
+
+    /**
+     * Snapshot creation date
+     */
     private Date created;
+
+    /**
+     * Snapshot description
+     */
     private String description;
+
+    /**
+     * Snapshot size
+     */
     private long size;
+
+    /**
+     * Snapshot status
+     * @see JVultrSnapshot.Status
+     */
     private Status status;
 
     /**
@@ -60,22 +81,42 @@ public class JVultrSnapshot {
         this.status = Status.valueOf(value.get("status").getAsString().toUpperCase());
     }
 
+    /**
+     * Get Vultr snapshot id
+     * @return snapshot id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Get snapshot creation date
+     * @return creation date
+     */
     public Date getCreated() {
         return created;
     }
 
+    /**
+     * Get snapshot description
+     * @return snapshot description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Get snapshot size
+     * @return snapshot size
+     */
     public long getSize() {
         return size;
     }
 
+    /**
+     * Get snapshot status
+     * @return snapshot status
+     */
     public Status getStatus() {
         return status;
     }

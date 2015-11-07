@@ -62,11 +62,18 @@ public class JVultrIPV6Network {
         return network;
     }
 
-
+    /**
+     * Get IPv6 network ip address
+     * @return IPv6 network ip
+     */
     public String getIp() {
         return ip;
     }
 
+    /**
+     * Get IPv6 network size
+     * @return IPv6 network size
+     */
     public int getSize() {
         return size;
     }

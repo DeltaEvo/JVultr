@@ -30,10 +30,29 @@ import java.util.Date;
  */
 public class JVultrISO {
 
+    /**
+     * Vultr ISO id
+     */
     private int id;
+
+    /**
+     * ISO creation date
+     */
     private Date created;
+
+    /**
+     * ISO filename
+     */
     private String filename;
+
+    /**
+     * ISO file size
+     */
     private long size;
+
+    /**
+     * ISO file MD5
+     */
     private String md5;
 
     /**
@@ -52,22 +71,42 @@ public class JVultrISO {
         this.md5 = value.get("md5sum").getAsString();
     }
 
+    /**
+     * Get Vultr ISO id
+     * @return iso id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Get ISO creation date
+     * @return creation date
+     */
     public Date getCreated() {
         return created;
     }
 
+    /**
+     * Get ISO file name
+     * @return file name
+     */
     public String getFilename() {
         return filename;
     }
 
+    /**
+     * Get ISO file size
+     * @return file size
+     */
     public long getSize() {
         return size;
     }
 
+    /**
+     * Get ISO file MD5
+     * @return file MD5
+     */
     public String getMd5() {
         return md5;
     }

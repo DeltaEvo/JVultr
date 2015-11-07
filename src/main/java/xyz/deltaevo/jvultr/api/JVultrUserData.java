@@ -29,6 +29,9 @@ import java.util.Base64;
  */
 public class JVultrUserData {
 
+    /**
+     * Base64 encoded Vultr user data
+     */
     private String userData;
 
     /**
@@ -39,10 +42,18 @@ public class JVultrUserData {
         userData = value.get("userdata").getAsString();
     }
 
+    /**
+     * Get base64 encoded user data
+     * @return encoded user data
+     */
     public String getUserData() {
         return userData;
     }
 
+    /**
+     * Get decoded user data
+     * @return decoded user data
+     */
     public String decode(){
         try {
             return new String(Base64.getDecoder().decode(userData.getBytes("UTF-8")));
