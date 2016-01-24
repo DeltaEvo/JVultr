@@ -20,8 +20,8 @@ package xyz.deltaevo.jvultr.api;
 import com.google.gson.JsonObject;
 import xyz.deltaevo.jvultr.utils.Reflection;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
-import java.util.Base64;
 
 /**
  * Represent a Vultr UserData in Base64
@@ -56,7 +56,7 @@ public class JVultrUserData {
      */
     public String decode(){
         try {
-            return new String(Base64.getDecoder().decode(userData.getBytes("UTF-8")));
+            return new String(DatatypeConverter.parseBase64Binary(new String(userData.getBytes("UTF-8"))));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return null;
