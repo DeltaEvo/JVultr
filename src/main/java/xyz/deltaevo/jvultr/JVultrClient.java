@@ -397,7 +397,8 @@ public class JVultrClient {
                                      @Optional String label , @Optional Integer sshKeyIds ,
                                      @Optional Boolean autoBackups, @Optional Integer appId ,
                                      @Optional String userData , @Optional Boolean notifyActivate ,
-                                     @Optional Boolean ddosProtection) throws JVultrException{
+                                     @Optional Boolean ddosProtection, @Optional int SubID, 
+                                     @Optional String host) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("DCID" , regionId);
         params.put("VPSPLANID" , planId);
@@ -415,6 +416,8 @@ public class JVultrClient {
         if(userData!= null)params.put("userdata",userData);
         if(notifyActivate != null)params.put("notify_activate",notifyActivate ? "yes" : "no");
         if(ddosProtection != null)params.put("ddos_protection",ddosProtection? "yes" : "no");
+        if (SubID != -1) params.put("floating_v4_SUBID", SubID);
+		if (host != null) params.put("hostname", host);
         JsonElement response = new JsonParser().parse(JVultrAPI.post(JVultrAPI.endpoint + "v1/server/create?api_key=" + apiKey, params));
         if(response.isJsonObject()){
             return getSevers().get(((JsonObject)response).get("SUBID").getAsInt());
@@ -428,14 +431,16 @@ public class JVultrClient {
                                      @Optional String label , @Optional Integer sshKey ,
                                      @Optional Boolean autoBackups , @Optional JVultrApplication app ,
                                      @Optional String userData , @Optional Boolean notifyActivate ,
-                                     @Optional Boolean ddosProtection) throws JVultrException{
+                                     @Optional Boolean ddosProtection, @Optional int floating_SUBID, 
+                                     @Optional String host) throws JVultrException{
         return createServer(region.getId() , plan.getId() , os.getId() , ipxeChainUrl , iso != null ? iso.getId() : null
         , script != null ? script.getId() : null , snapshot != null ? snapshot.getId() : null , enableIpv6 , enablePrivateNetwork , label , sshKey != null ? sshKey : null,
-                autoBackups , app != null ? app.getId() : null , userData , notifyActivate , ddosProtection);
+                autoBackups , app != null ? app.getId() : null , userData , notifyActivate , ddosProtection,
+				floating_SUBID, host);
     }
     public JVultrServer createServer(int regionId , int planId , int osId) throws JVultrException{
         return createServer(regionId, planId, osId , null , null , null , null , null , null
-                , null , null , null , null , null , null ,null);
+                , null , null , null , null , null , null ,null, -1, null);
     }
 
     public JVultrServer createServer(JVultrRegion region, JVultrPlan plan , JVultrOS os) throws JVultrException{
