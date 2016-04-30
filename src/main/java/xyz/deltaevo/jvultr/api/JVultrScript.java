@@ -76,13 +76,14 @@ public class JVultrScript {
     public JVultrScript(JsonObject value){
         this.id = value.get("SCRIPTID").getAsInt();
         try {
-            this.created = JVultrAPI.dateFormat.parse(value.get("date_created").getAsString());
-            this.modified = JVultrAPI.dateFormat.parse(value.get("date_modified").getAsString());
+            this.created = JVultrAPI.DATE_FORMAT.parse(value.get("date_created").getAsString());
+            this.modified = JVultrAPI.DATE_FORMAT.parse(value.get("date_modified").getAsString());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         this.name = value.get("name").getAsString();
-        this.type = Type.valueOf(value.get("type").getAsString().toUpperCase());
+        if(value.has("type"))
+            this.type = Type.valueOf(value.get("type").getAsString().toUpperCase());
         this.script = value.get("script").getAsString();
     }
 

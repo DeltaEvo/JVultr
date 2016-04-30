@@ -22,7 +22,7 @@ import xyz.deltaevo.jvultr.api.JVultrPlan;
 import xyz.deltaevo.jvultr.api.JVultrRegion;
 import xyz.deltaevo.jvultr.exception.JVultrException;
 
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A JVultr Cache to limit requests
@@ -32,8 +32,8 @@ public class JVultrCache {
     //////////////////////////////////////////////////////////
     //                       Static Cache                  //
     ////////////////////////////////////////////////////////
-    private static HashMap<Integer,JVultrRegion> cachedRegions;
-    private static HashMap<Integer , JVultrPlan> cachedPlans;
+    private static Map<Integer,JVultrRegion> cachedRegions;
+    private static Map<Integer , JVultrPlan> cachedPlans;
     private static JVultrOS custom;
     static {
         try {
@@ -57,11 +57,11 @@ public class JVultrCache {
         }
     }
 
-    public static HashMap<Integer,JVultrRegion> getCachedRegions(){
+    public static Map<Integer,JVultrRegion> getCachedRegions(){
         return cachedRegions;
     }
 
-    public static void setCachedRegions(HashMap<Integer, JVultrRegion> regions) {
+    public static void setCachedRegions(Map<Integer, JVultrRegion> regions) {
         cachedRegions = regions;
     }
 
@@ -78,11 +78,11 @@ public class JVultrCache {
         return getCachedRegions().get(id);
     }
 
-    public static HashMap<Integer,JVultrPlan> getCachedPlans(){
+    public static Map<Integer,JVultrPlan> getCachedPlans(){
         return cachedPlans;
     }
 
-    public static void setCachedPlans(HashMap<Integer, JVultrPlan> plans) {
+    public static void setCachedPlans(Map<Integer, JVultrPlan> plans) {
         cachedPlans = plans;
     }
 

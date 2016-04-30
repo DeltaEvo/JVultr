@@ -3,9 +3,14 @@ apply plugin: 'idea'
 
 group = 'xyz.deltaevo.jvultr'
 version = '1.0'
-archivesBaseName = 'JVultr'
 
 compileJava.options.encoding = 'UTF-8'
 
 repositories { mavenCentral()}
 dependencies { compile 'com.google.code.gson:gson:2.3.1' }
+
+task fatJar(type: Jar) {
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

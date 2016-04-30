@@ -47,7 +47,7 @@ public class JVultrDns {
     public JVultrDns(JsonObject value){
         this.domain = value.get("domain").getAsString();
         try {
-            this.created = JVultrAPI.dateFormat.parse(value.get("date_created").getAsString());
+            this.created = JVultrAPI.DATE_FORMAT.parse(value.get("date_created").getAsString());
         } catch (ParseException e) {
             e.printStackTrace();
         }

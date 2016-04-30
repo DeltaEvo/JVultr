@@ -43,16 +43,16 @@ public class JVultrAPI {
     /**
      * Vultr api EndPoint
      */
-    public static final String endpoint = "https://api.vultr.com/";
+    public static final String ENDPOINT = "https://api.vultr.com/";
 
     /**
      * Vultr api date format
      */
-    public static final SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 
 
-    public static HashMap<Integer,JVultrRegion> getRegions() throws JVultrException {
-        JsonElement response = new JsonParser().parse(get(JVultrAPI.endpoint + "v1/regions/list"));
+    public static Map<Integer,JVultrRegion> getRegions() throws JVultrException {
+        JsonElement response = new JsonParser().parse(get(JVultrAPI.ENDPOINT + "v1/regions/list", null));
         if(response.isJsonObject()){
             HashMap<Integer , JVultrRegion> regions = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -64,8 +64,8 @@ public class JVultrAPI {
         return new HashMap<>();
     }
 
-    public static HashMap<Integer , JVultrOS> getOSs() throws JVultrException{
-        JsonElement response = new JsonParser().parse(get(JVultrAPI.endpoint + "v1/os/list"));
+    public static Map<Integer , JVultrOS> getOSs() throws JVultrException{
+        JsonElement response = new JsonParser().parse(get(JVultrAPI.ENDPOINT + "v1/os/list", null));
         if(response.isJsonObject()){
             HashMap<Integer , JVultrOS> os = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -77,8 +77,8 @@ public class JVultrAPI {
         return new HashMap<>();
     }
 
-    public static HashMap<Integer , JVultrApplication> getApplications() throws JVultrException{
-        JsonElement response = new JsonParser().parse(get(JVultrAPI.endpoint + "v1/app/list"));
+    public static Map<Integer , JVultrApplication> getApplications() throws JVultrException{
+        JsonElement response = new JsonParser().parse(get(JVultrAPI.ENDPOINT + "v1/app/list", null));
         if(response.isJsonObject()){
             HashMap<Integer , JVultrApplication> applications = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -97,8 +97,8 @@ public class JVultrAPI {
      * @throws JVultrException if an error Occurred
      * @see JVultrPlan
      */
-    public static HashMap<Integer , JVultrPlan> getPlans() throws JVultrException{
-        JsonElement response = new JsonParser().parse(get(JVultrAPI.endpoint + "v1/plans/list"));
+    public static Map<Integer , JVultrPlan> getPlans() throws JVultrException{
+        JsonElement response = new JsonParser().parse(get(JVultrAPI.ENDPOINT + "v1/plans/list", null));
         if(response.isJsonObject()){
             HashMap<Integer , JVultrPlan> os = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -111,7 +111,7 @@ public class JVultrAPI {
     }
 
     public static List<JVultrPlan> getPlansFor(int regionId) throws JVultrException{
-        JsonElement response = new JsonParser().parse(get(JVultrAPI.endpoint + "v1/regions/availability?DCID=" +regionId));
+        JsonElement response = new JsonParser().parse(get(JVultrAPI.ENDPOINT + "v1/regions/availability?DCID=" +regionId , null));
         if(response.isJsonArray()){
             List<JVultrPlan> availablePlans = new ArrayList<>();
             for(JsonElement element : response.getAsJsonArray()){
@@ -133,10 +133,12 @@ public class JVultrAPI {
      * @return the response
      * @throws JVultrException if an Exception Occurred
      */
-    static String get(String url) throws JVultrException{
+    static String get(String url , String apiKey) throws JVultrException{
         try{
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
             conn.setRequestMethod("GET");
+            if(apiKey != null)
+                conn.setRequestProperty("API-Key" , apiKey);
             conn.setDoOutput(true);
             if(conn.getResponseCode() != 200)
                 switch (conn.getResponseCode()){
@@ -166,10 +168,12 @@ public class JVultrAPI {
      * @return the response
      * @throws JVultrException if an Exception Occurred
      */
-    static String post(String url , String parameters) throws JVultrException{
+    static String post(String url , String apiKey , String parameters) throws JVultrException{
         try{
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
             conn.setRequestMethod("POST");
+            if(apiKey != null)
+                conn.setRequestProperty("API-Key" , apiKey);
             conn.setDoOutput(true);
             if(parameters != null){
                 conn.setRequestProperty( "charset", "utf-8");
@@ -203,7 +207,7 @@ public class JVultrAPI {
      * @return the response
      * @throws JVultrException if an Exception Occurred
      */
-    static String post(String url , Map<String , Object> parameters) throws JVultrException{
+    static String post(String url , String apiKey , Map<String , Object> parameters) throws JVultrException{
         try{
             StringBuilder sb = new StringBuilder();
             for (Map.Entry<String,Object> param : parameters.entrySet()) {
@@ -212,7 +216,7 @@ public class JVultrAPI {
                 sb.append('=');
                 sb.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
             }
-            return post(url , sb.toString());
+            return post(url ,apiKey, sb.toString());
         }catch (IOException e){
             throw new RequestFailed(e);
         }

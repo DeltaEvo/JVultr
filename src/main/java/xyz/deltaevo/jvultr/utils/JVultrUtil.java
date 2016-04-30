@@ -29,12 +29,13 @@ import xyz.deltaevo.jvultr.exception.JVultrException;
  */
 public class JVultrUtil {
 
-    private JVultrPlan searchPlan(String regionName , int memory) throws JVultrException{
+    private JVultrUtil() {}
+    public static BiValue<JVultrPlan , JVultrRegion> searchPlan(String regionName , int memory) throws JVultrException{
         for(JVultrPlan plan : JVultrAPI.getPlans().values()){
             if(plan.getRam() == memory){
                 for(JVultrRegion region : plan.getAvailableRegions()){
                     if(region.getName().equals(regionName)){
-                        return plan;
+                        return new BiValue<>(plan , region);
                     }
                 }
             }
@@ -42,12 +43,12 @@ public class JVultrUtil {
         return null;
     }
 
-    private JVultrPlan searchCachedPlan(String regionName , int memory) throws JVultrException{
+    public static BiValue<JVultrPlan , JVultrRegion>  searchCachedPlan(String regionName , int memory) throws JVultrException{
         for(JVultrPlan plan : JVultrCache.getCachedPlans().values()){
             if(plan.getRam() == memory){
                 for(JVultrRegion region : plan.getAvailableRegions()){
                     if(region.getName().equals(regionName)){
-                        return plan;
+                        return new BiValue<>(plan , region);
                     }
                 }
             }

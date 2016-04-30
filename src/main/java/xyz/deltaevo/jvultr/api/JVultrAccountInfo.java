@@ -59,7 +59,7 @@ public class JVultrAccountInfo {
         this.balance = value.get("balance").getAsFloat();
         this.pendingCharges = value.get("pending_charges").getAsFloat();
         try {
-            this.lastPayment = JVultrAPI.dateFormat.parse(value.get("last_payment_date").getAsString());
+            this.lastPayment = JVultrAPI.DATE_FORMAT.parse(value.get("last_payment_date").getAsString());
         } catch (ParseException e) {
             e.printStackTrace();
         }

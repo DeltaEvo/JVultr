@@ -72,7 +72,7 @@ public class JVultrSnapshot {
     public JVultrSnapshot(JsonObject value) {
         this.id = value.get("SNAPSHOTID").getAsString();
         try {
-            this.created = JVultrAPI.dateFormat.parse(value.get("date_created").getAsString());
+            this.created = JVultrAPI.DATE_FORMAT.parse(value.get("date_created").getAsString());
         } catch (ParseException e) {
             e.printStackTrace();
         }

@@ -55,7 +55,7 @@ public class JVultrClient {
      */
     public JVultrAccountInfo getAccountInfo() throws JVultrException{
         JsonParser parser = new JsonParser();
-        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/account/info?api_key=" + apiKey));
+        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/account/info" ,apiKey));
         if(response.isJsonObject())return new JVultrAccountInfo((JsonObject) response);
         else return null;
     }
@@ -69,7 +69,7 @@ public class JVultrClient {
      */
     public HashMap<String , JVultrSnapshot> getSnapshots() throws JVultrException {
         JsonParser parser = new JsonParser();
-        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/snapshot/list?api_key=" + apiKey));
+        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/snapshot/list" ,apiKey));
         if(response.isJsonObject()){
             HashMap<String , JVultrSnapshot> snapshots = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -90,7 +90,7 @@ public class JVultrClient {
      */
     public HashMap<Integer , JVultrISO> getISOs() throws JVultrException {
         JsonParser parser = new JsonParser();
-        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/iso/list?api_key=" + apiKey));
+        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/iso/list" ,apiKey));
         if(response.isJsonObject()){
             HashMap<Integer , JVultrISO> isos = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -111,7 +111,7 @@ public class JVultrClient {
      */
     public HashMap<Integer , JVultrScript> getScripts() throws JVultrException {
         JsonParser parser = new JsonParser();
-        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/startupscript/list?api_key=" + apiKey));
+        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/startupscript/list",apiKey));
         if(response.isJsonObject()){
             HashMap<Integer , JVultrScript> scripts = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -132,7 +132,7 @@ public class JVultrClient {
     public void destroyScript(int id) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("SCRIPTID" , id);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/startupscript/destroy?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/startupscript/destroy",apiKey , params);
     }
 
     /**
@@ -149,7 +149,7 @@ public class JVultrClient {
         params.put("name" , name);
         params.put("script" , script);
         params.put("type" ,type.name().toLowerCase());
-        JsonElement response = new JsonParser().parse(JVultrAPI.post(JVultrAPI.endpoint + "v1/startupscript/create?api_key=" + apiKey , params));
+        JsonElement response = new JsonParser().parse(JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/startupscript/create" ,apiKey , params));
         if(response.isJsonObject()){
             return new JVultrScript(((JsonObject)response).get("SCRIPTID").getAsInt() , new Date() , new Date() , name , type , script);
         }else return null;
@@ -168,7 +168,7 @@ public class JVultrClient {
         params.put("SCRIPTID" , id);
         if(name != null)params.put("name" , name);
         if(script != null)params.put("script" , script);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/startupscript/destroy?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/startupscript/destroy",apiKey, params);
     }
 
     /**
@@ -192,7 +192,7 @@ public class JVultrClient {
      */
     public HashMap<String , JVultrOS> getOsChangeListFor(JVultrServer server) throws JVultrException {
         JsonParser parser = new JsonParser();
-        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/server/os_change_list?api_key=" + apiKey + "&SUBID=" + server.getId()));
+        JsonElement response = parser.parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/server/os_change_list?SUBID=" + server.getId() ,apiKey));
         if(response.isJsonObject()){
             HashMap<String , JVultrOS> oss = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -214,7 +214,7 @@ public class JVultrClient {
      * @see JVultrAPI#getPlans()
      */
     public HashMap<Integer , JVultrPlan> getPlans() throws JVultrException{
-        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/plans/list?api_key=" + apiKey));
+        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/plans/list" ,apiKey));
         if(response.isJsonObject()){
             HashMap<Integer , JVultrPlan> os = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -234,7 +234,7 @@ public class JVultrClient {
      * @see JVultrServer
      */
     public HashMap<Integer , JVultrServer> getSevers() throws JVultrException {
-        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/server/list?api_key=" + apiKey));
+        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/server/list",apiKey));
         if(response.isJsonObject()){
             HashMap<Integer , JVultrServer> snapshots = new HashMap<>();
             for(Map.Entry<String , JsonElement> element : ((JsonObject)response).entrySet()){
@@ -254,7 +254,7 @@ public class JVultrClient {
      * @see JVultrUserData
      */
     public JVultrUserData getUserData(int server) throws JVultrException{
-        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/server/get_user_data?api_key=" + apiKey + "&SUBID="+server));
+        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/server/get_user_data?SUBID="+server,apiKey));
         if(response.isJsonObject())return new JVultrUserData((JsonObject) response);
         return null;
     }
@@ -267,7 +267,7 @@ public class JVultrClient {
      * @see JVultrDns
      */
     public List<JVultrDns> getDNSs() throws JVultrException{
-        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/dns/list?api_key=" + apiKey));
+        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/dns/list",apiKey));
         if(response.isJsonArray()){
             List<JVultrDns> dnss = new ArrayList<>();
             for(JsonElement element : response.getAsJsonArray()){
@@ -279,7 +279,7 @@ public class JVultrClient {
     }
 
     public List<JVultrPlan> getUpgradePlanList(int serverId) throws JVultrException{
-        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/server/upgrade_plan_list?api_key=" + apiKey + "&SUBID=" + serverId));
+        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/server/upgrade_plan_list?SUBID=" + serverId,apiKey));
         if(response.isJsonArray()){
             List<JVultrPlan> servers = new ArrayList<>();
             for(JsonElement element : response.getAsJsonArray()){
@@ -291,7 +291,7 @@ public class JVultrClient {
     }
 
     public List<JVultrDnsRecord> getDNSRecords(String domain) throws JVultrException{
-        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.endpoint + "v1/dns/records?api_key=" + apiKey + "&domain=" + domain));
+        JsonElement response = new JsonParser().parse(JVultrAPI.get(JVultrAPI.ENDPOINT + "v1/dns/records?domain=" + domain,apiKey));
         if(response.isJsonArray()){
             List<JVultrDnsRecord> records = new ArrayList<>();
             for(JsonElement element : response.getAsJsonArray()){
@@ -310,14 +310,14 @@ public class JVultrClient {
         HashMap<String , Object> params = new HashMap<>();
         params.put("domain" , domain);
         params.put("serverip" , ip);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/dns/create_domain?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/dns/create_domain",apiKey , params);
         return new JVultrDns(domain , new Date());
     }
 
     public void deleteDns(String domain) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("domain" , domain);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/dns/delete_domain?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/dns/delete_domain", apiKey , params);
     }
 
     public void createRecord(String domain ,String subdomain , JVultrDnsRecord.Type type,
@@ -330,33 +330,33 @@ public class JVultrClient {
         params.put("data" , data);
         if(ttl != null)params.put("ttl" , ttl);
         if(priority != null)params.put("priority" , priority);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/dns/create_record?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/dns/create_record",apiKey , params);
     }
 
     public void deleteRecord(String domain , int id) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("domain" , domain);
         params.put("RECORDID" , id);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/dns/delete_record?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/dns/delete_record",apiKey , params);
     }
 
     public void updateRecord(String domain , int id) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("domain" , domain);
         params.put("RECORDID" , id);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/dns/update_record?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/dns/update_record",apiKey , params);
     }
 
     public void destroySnapshot(String id) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("SNAPSHOTID" , id);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/snapshot/destroy?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/snapshot/destroy",apiKey , params);
     }
 
     public void createSnapshot(int id) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("SUBID" , id);
-        System.out.println(JVultrAPI.post(JVultrAPI.endpoint + "v1/snapshot/create?api_key=" + apiKey, params));
+        System.out.println(JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/snapshot/create",apiKey, params));
     }
 
     public void destroySnapshot(JVultrSnapshot snapshot) throws JVultrException{
@@ -397,7 +397,7 @@ public class JVultrClient {
                                      @Optional String label , @Optional Integer sshKeyIds ,
                                      @Optional Boolean autoBackups, @Optional Integer appId ,
                                      @Optional String userData , @Optional Boolean notifyActivate ,
-                                     @Optional Boolean ddosProtection, @Optional int SubID, 
+                                     @Optional Boolean ddosProtection, @Optional int subID,
                                      @Optional String host) throws JVultrException{
         HashMap<String , Object> params = new HashMap<>();
         params.put("DCID" , regionId);
@@ -416,9 +416,9 @@ public class JVultrClient {
         if(userData!= null)params.put("userdata",userData);
         if(notifyActivate != null)params.put("notify_activate",notifyActivate ? "yes" : "no");
         if(ddosProtection != null)params.put("ddos_protection",ddosProtection? "yes" : "no");
-        if (SubID != -1) params.put("floating_v4_SUBID", SubID);
+        if (subID != -1) params.put("floating_v4_SUBID", subID);
 		if (host != null) params.put("hostname", host);
-        JsonElement response = new JsonParser().parse(JVultrAPI.post(JVultrAPI.endpoint + "v1/server/create?api_key=" + apiKey, params));
+        JsonElement response = new JsonParser().parse(JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/server/create", apiKey, params));
         if(response.isJsonObject()){
             return getSevers().get(((JsonObject)response).get("SUBID").getAsInt());
         }else return null;
@@ -431,7 +431,7 @@ public class JVultrClient {
                                      @Optional String label , @Optional Integer sshKey ,
                                      @Optional Boolean autoBackups , @Optional JVultrApplication app ,
                                      @Optional String userData , @Optional Boolean notifyActivate ,
-                                     @Optional Boolean ddosProtection, @Optional int floating_SUBID, 
+                                     @Optional Boolean ddosProtection, @Optional int floating_SUBID,
                                      @Optional String host) throws JVultrException{
         return createServer(region.getId() , plan.getId() , os.getId() , ipxeChainUrl , iso != null ? iso.getId() : null
         , script != null ? script.getId() : null , snapshot != null ? snapshot.getId() : null , enableIpv6 , enablePrivateNetwork , label , sshKey != null ? sshKey : null,
@@ -450,7 +450,7 @@ public class JVultrClient {
     public void destroyServer(int id) throws JVultrException {
         HashMap<String , Object> params = new HashMap<>();
         params.put("SUBID" , id);
-        JVultrAPI.post(JVultrAPI.endpoint + "v1/server/destroy?api_key=" + apiKey , params);
+        JVultrAPI.post(JVultrAPI.ENDPOINT + "v1/server/destroy",apiKey, params);
     }
 
     public void destroyServer(JVultrServer server) throws JVultrException{

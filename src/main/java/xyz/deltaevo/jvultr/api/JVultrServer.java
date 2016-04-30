@@ -205,7 +205,7 @@ public class JVultrServer {
         this.region = JVultrCache.getCachedRegion(value.get("DCID").getAsInt());
         this.defaultPassword = value.get("default_password").getAsString();
         try {
-            this.created = JVultrAPI.dateFormat.parse(value.get("date_created").getAsString());
+            this.created = JVultrAPI.DATE_FORMAT.parse(value.get("date_created").getAsString());
         } catch (ParseException e) {
             e.printStackTrace();
         }
