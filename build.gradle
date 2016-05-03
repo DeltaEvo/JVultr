@@ -9,6 +9,13 @@ version = '1.0'
 
 compileJava.options.encoding = 'UTF-8'
 
+ext."signing.keyId" = hasProperty("signing.keyId") ?
+        ext."signing.keyId" : System.getenv("signing.keyId");
+ext."signing.secretKeyRingFile" = hasProperty("signing.secretKeyRingFile") ?
+        ext."signing.secretKeyRingFile" : System.getenv("signing.secretKeyRingFile");
+ext."signing.password" = hasProperty("signing.password") ?
+        ext."signing.password" : System.getenv("signing.password");
+
 repositories { mavenCentral()}
 dependencies { compile 'com.google.code.gson:gson:2.3.1' }
 
@@ -38,7 +45,10 @@ uploadArchives {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: sonatypeUsername, password: sonatypePassword)
+                authentication(userName: hasProperty('sonatypeUsername') ?
+                        sonatypeUsername : System.getenv('sonatypeUsername'),
+                        password: hasProperty('sonatypePassword') ?
+                                sonatypePassword : System.getenv('sonatypePassword'))
             }
 
             pom.project {
