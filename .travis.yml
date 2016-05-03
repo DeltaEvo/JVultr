@@ -1,6 +1,0 @@
-language: java
-install: gradle jar
-script: gradle test
-jdk:
-  - oraclejdk8
-  - oraclejdk7
