@@ -74,7 +74,8 @@ public class JVultrCache {
     }
 
     public static JVultrRegion getCachedRegion(int id){
-        if(!getCachedRegions().containsKey(id))reloadCachedRegions();
+        if(!getCachedRegions().containsKey(id))
+            reloadCachedRegions();
         return getCachedRegions().get(id);
     }
 
