@@ -95,7 +95,8 @@ public class JVultrCache {
     }
 
     public static JVultrPlan getCachedPlan(int id){
-        if(!getCachedPlans().containsKey(id))reloadCachedPlans();
+        if(!getCachedPlans().containsKey(id))
+            reloadCachedPlans();
         return getCachedPlans().get(id);
     }
 
