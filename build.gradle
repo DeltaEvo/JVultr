@@ -1,5 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 group = 'xyz.deltaevo.jvultr'
 version = '1.0'
@@ -9,8 +12,60 @@ compileJava.options.encoding = 'UTF-8'
 repositories { mavenCentral()}
 dependencies { compile 'com.google.code.gson:gson:2.3.1' }
 
-task fatJar(type: Jar) {
-    baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives jar
+
+    archives javadocJar
+    archives sourcesJar
+}
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+
+            pom.project {
+                name 'JVultr'
+                packaging 'jar'
+                description 'JVultr is a java binding of Vultr rest api'
+
+                scm {
+                    url 'scm:git@github.com:DeltaEvolution/JVultr.git'
+                    connection 'scm:git@github.com:DeltaEvolution/JVultr.git'
+                    developerConnection 'scm:git@github.com:DeltaEvolution/JVultr.git'
+                }
+
+                licenses {
+                    license {
+                        name 'GNU GENERAL PUBLIC LICENSE, Version 3'
+                        url 'http://www.gnu.org/licenses/gpl-3.0.fr.html'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'deltaevo'
+                        name 'Duarte David'
+                    }
+                }
+            }
+        }
+    }
 }
