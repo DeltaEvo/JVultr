@@ -1,5 +1,5 @@
 language: java
-install: gradle build
+install: gradle jar
 jdk:
   - oraclejdk8
   - oraclejdk7
